@@ -1,0 +1,77 @@
+{
+    "name": "Plotly",
+    "description": "Plotly is the easiest and fastest way to graph and share your data online.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/2209-plotly.jpg",
+    "tags": [
+        "charts",
+        "have api",
+        "visualizations"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/plotly\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Plotly",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/2209-plotly.jpg",
+            "humanURL": "https:\/\/plot.ly\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/plotly-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.plot.ly\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.plot.ly\/rss"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/plotly"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/plotly"
+        },
+        {
+            "type": "Email",
+            "url": "accounts@plot.ly"
+        },
+        {
+            "type": "Email",
+            "url": "feedback@plot.ly"
+        },
+        {
+            "type": "Email",
+            "url": "sales@plot.ly"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/plotly"
+        },
+        {
+            "type": "Pricing",
+            "url": "https:\/\/plot.ly\/products\/cloud\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/plotlygraphs"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/plot.ly\/"
+        }
+    ]
+}
