@@ -1,0 +1,28 @@
+generated: '2026-08-26'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: plotly.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 23 04:55:39 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+- host: dash.plotly.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  5 01:01:14 2026 GMT
+  hsts: false
+domains:
+- domain: plotly.com
+  dnssec: false
+  caa:
+  - 0 issue "letsencrypt.org"
+  - 0 issue "amazon.com"
+  - 0 iodef "mailto:webmaster@plotly.com"
+  - 0 issue "sectigo.com"
+  - 0 issue "digicert.com"
+  - 0 issue "pki.goog"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

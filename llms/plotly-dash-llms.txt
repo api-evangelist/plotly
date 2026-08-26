@@ -1,0 +1,541 @@
+# Dash Documentation
+
+> Dash is a Python framework for building analytical web applications.
+> This documentation covers installation, layouts, callbacks, component
+> libraries, and deployment to Plotly Cloud and Dash Enterprise.
+>
+> **AI assistant tip:** Connect to the Dash Docs MCP server at
+> https://dash.plotly.com/_mcp for direct search and page-retrieval
+> without web fetching. Any page is also readable as plain markdown by
+> appending .md to its URL (e.g. https://dash.plotly.com/layout.md).
+
+## Quickstart
+
+- [Installation](https://dash.plotly.com/installation.md): How to install and upgrade Dash
+- [A Minimal Dash App](https://dash.plotly.com/minimal-app.md): This page will show you a common template for a minimal Dash app.
+- [Dash in 20 Minutes Tutorial](https://dash.plotly.com/tutorial.md): Learn to create a Dash app in 20 minutes with this tutorial.
+- [Using Dash with AI Coding Assistants](https://dash.plotly.com/ai-coding-assistants.md): Write Dash apps with AI agents like Claude Code, Cursor, or GitHub Copilot.
+- [Dash Docs MCP Server](https://dash.plotly.com/mcp.md): Connect AI agents to the Dash documentation via MCP.
+
+## Dash Fundamentals
+
+- [Part 1. Layout](https://dash.plotly.com/layout.md): The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components.
+- [Part 2. Adding Interactivity](https://dash.plotly.com/basic-callbacks.md): Add interactivity to your Dash app with callbacks: functions that run automatically when an input changes and update your app's outputs, lik…
+- [Part 3. Graphs as Interactive Components](https://dash.plotly.com/interactive-graphing.md): Make interactive charts in Dash: use graphs as inputs as well as outputs by binding callbacks to hover, click, and selection events to cross…
+- [Part 4. Sharing Data Between Callbacks](https://dash.plotly.com/sharing-data-between-callbacks.md): Global variables will break your Dash apps.
+- [Part 5. Publishing Your App](https://dash.plotly.com/deployment.md): Plotly provides deployment platforms to host your apps.
+
+## Dash Callbacks
+
+- [Advanced Callbacks](https://dash.plotly.com/advanced-callbacks.md): Now that you've gotten through the basics, explore some other things you can do with callbacks - from performance improvements to callback c…
+- [Clientside Callbacks](https://dash.plotly.com/clientside-callbacks.md): You might want to execute a callback in the frontend as opposed to the backend if you want to avoid the extra time that it takes to make a r…
+- [Pattern-Matching Callbacks](https://dash.plotly.com/pattern-matching-callbacks.md): The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to write callbacks that respond to or update an arbitrary o…
+- [Partial Property Updates](https://dash.plotly.com/partial-properties.md): Improve app performance by using partial updates to Dash component properties.
+- [Background Callbacks](https://dash.plotly.com/background-callbacks.md): Use background callbacks to implement long-running callbacks and avoid server timeouts.
+- [Flexible Callback Signatures](https://dash.plotly.com/flexible-callback-signatures.md): Flexible Callback Signatures in Dash 2.0 let you use keyword arguments, group arguments using dicts or tuples, and mix `Input` and `State` d…
+- [Duplicate Callback Outputs](https://dash.plotly.com/duplicate-callback-outputs.md): Understanding the duplicate callback output error
+- [Determining Which Callback Input Changed](https://dash.plotly.com/determining-which-callback-input-changed.md): Understanding callback context and determining which input triggered a callback
+- [Callback Error Handlers](https://dash.plotly.com/callback-error-handlers.md): Learn how to create custom error handlers that will run when exceptions occur in a callback.
+- [Callback Gotchas](https://dash.plotly.com/callback-gotchas.md): Dash callbacks have some idiosyncrasies that should be taken into consideration when building a Dash app.
+
+## Dash MCP
+
+- [Dash MCP](https://dash.plotly.com/dash-mcp.md): Turn any Dash app into an MCP server, enabling AI agents to discover and interact with your app's callbacks and datasets using the Model Con…
+- [Callbacks as MCP Tools](https://dash.plotly.com/dash-mcp/callbacks.md): Control how AI agents see and call your Dash callbacks — enable or disable MCP access per callback, add type annotations, and expose docstri…
+- [Custom MCP Tools](https://dash.plotly.com/dash-mcp/decorator.md): Use the mcp_enabled decorator to expose any plain Python function as an MCP tool, giving AI agents direct access to your app's data and busi…
+- [MCP Authentication](https://dash.plotly.com/dash-mcp/auth.md): Secure your Dash MCP server: Plotly Cloud handles authentication automatically, or implement the standard OAuth 2.0 flow from the MCP specif…
+- [MCP Reference](https://dash.plotly.com/dash-mcp/reference.md): Complete reference for Dash MCP: constructor parameters for enabling and configuring the server, per-callback MCP settings, and the mcp_enab…
+
+## Plotly Cloud Guide
+
+- [Plotly Cloud Guide: Overview](https://dash.plotly.com/plotly-cloud.md): Publish, manage, and share Dash apps on Plotly Cloud.
+- [Publishing from Local Files](https://dash.plotly.com/plotly-cloud/publish.md): Publish Dash apps to Plotly Cloud from the UI, Dash dev tools, or the CLI.
+- [Updating Your App](https://dash.plotly.com/plotly-cloud/update.md): Publish new versions of your Dash app on Plotly Cloud.
+- [Signing In](https://dash.plotly.com/plotly-cloud/sign-in.md): Learn about the authentication methods that Plotly Cloud supports, including logging in with existing accounts such as Google as well as sin…
+- [Teams](https://dash.plotly.com/plotly-cloud/teams.md): Manage teams on Plotly Cloud.
+- [Email Domain Verification](https://dash.plotly.com/plotly-cloud/teams/domain-verification.md): Verify that you own a given domain in order to automatically add colleagues in your organization to your team and prepare for single sign-on…
+- [Custom Domains](https://dash.plotly.com/plotly-cloud/teams/custom-domains.md): Serve your team's Dash apps at URLs on domains you own.
+- [Using Enterprise Libraries](https://dash.plotly.com/plotly-cloud/enterprise-libraries.md): Add enterprise-grade features to your apps.
+- [Access Control and Sharing](https://dash.plotly.com/plotly-cloud/share.md): Manage permissions on apps published to Plotly Cloud.
+- [Setting Environment Variables](https://dash.plotly.com/plotly-cloud/environment-variables.md): Manage environment variables for Dash apps on Plotly Cloud.
+- [Compute Mode and App Size](https://dash.plotly.com/plotly-cloud/compute.md): Configure the compute mode and app size for Dash apps on Plotly Cloud.
+- [Viewing Logs](https://dash.plotly.com/plotly-cloud/logs.md): View build and runtime logs for your Dash apps on Plotly Cloud.
+- [Plotly Cloud IP Addresses](https://dash.plotly.com/plotly-cloud-ip-addresses.md): Connect your published Dash apps on Plotly Cloud to external data sources.
+- [Configuration](https://dash.plotly.com/plotly-cloud/cli.md): Configure the Plotly Cloud CLI for publishing Dash apps.
+- [CLI and Automation: Reference](https://dash.plotly.com/plotly-cloud/cli/reference.md): Complete command reference for the Plotly Cloud CLI.
+- [API Keys](https://dash.plotly.com/plotly-cloud/api-keys.md): Create and manage Plotly Cloud API keys for programmatic access.
+- [CI/CD](https://dash.plotly.com/plotly-cloud/ci-cd.md): Set up continuous deployment of Dash apps to Plotly Cloud with GitHub Actions, GitLab CI, Bitbucket Pipelines, and other popular CI/CD provi…
+- [AI Agents](https://dash.plotly.com/plotly-cloud/ai-agents.md): Use AI coding agents like Claude Code, Cursor, and GitHub Copilot to build, iterate on, and deploy Dash apps to Plotly Cloud with the right…
+- [Dash MCP on Plotly Cloud](https://dash.plotly.com/plotly-cloud/dash-mcp.md): Deploy and authenticate a Dash MCP server with Plotly Cloud.
+- [Plotly Studio Embedded](https://dash.plotly.com/plotly-cloud/studio-embedded.md): Add a floating AI chatbot to a Dash app published on Plotly Cloud.
+
+## Open Source Component Libraries
+
+- [Dash Core Components: Overview](https://dash.plotly.com/dash-core-components.md): Dash Core Components are essential UI elements for building interactive Dash apps.
+- [Dash Core Components: Button](https://dash.plotly.com/dash-core-components/button.md): dcc.Button works like html.Button, but has consistent styling with other Dash Core Components.
+- [Checklist](https://dash.plotly.com/dash-core-components/checklist.md): The dcc.Checklist component renders a customizable checklist for selecting multiple options, ideal for user input.
+- [Clipboard](https://dash.plotly.com/dash-core-components/clipboard.md): The dcc.Clipboard component enables users to copy text to the clipboard with a single click.
+- [ConfirmDialog](https://dash.plotly.com/dash-core-components/confirmdialog.md): dcc.ConfirmDialog is a component featuring the browser's native 'confirm' modal with optional message & two buttons.
+- [ConfirmDialogProvider](https://dash.plotly.com/dash-core-components/confirmdialogprovider.md): Use dcc.ConfirmDialogProvider to display an alert when a user selects an item.
+- [DatePickerRange](https://dash.plotly.com/dash-core-components/datepickerrange.md): The dcc.DatePickerRange component helps users select a range between two dates in a calendar.
+- [DatePickerSingle](https://dash.plotly.com/dash-core-components/datepickersingle.md): The dcc.DatePickerSingle component helps users select a date, either by entering text or choosing on a calendar.
+- [Download](https://dash.plotly.com/dash-core-components/download.md): dcc.Download allows users to directly download files like spreadsheets, images, and text files from your app, notifying you when data change…
+- [Dropdown](https://dash.plotly.com/dash-core-components/dropdown.md): The dcc.Dropdown component creates a customizable dropdown menu for selecting one or multiple items from a list of options.
+- [Graph](https://dash.plotly.com/dash-core-components/graph.md): Use the dcc.Graph component for rendering interactive Plotly graphs, enabling dynamic data visualization in your app.
+- [Geolocation](https://dash.plotly.com/dash-core-components/geolocation.md): Use the dcc.Geolocation to retrieve the geographic location of the user, enhancing location-based features in your app.
+- [Input](https://dash.plotly.com/dash-core-components/input.md): Use the dcc.Input component to create input fields for text, numbers, passwords, and more, allowing dynamic user input.
+- [Interval](https://dash.plotly.com/dash-core-components/interval.md): dcc.Interval is a component that triggers a callback periodically, useful for updating data or refreshing components at set intervals.
+- [Dash Core Components: Link](https://dash.plotly.com/dash-core-components/link.md): Use dcc.Link to navigate between different pages in a multi-page Dash app without reloading the page.
+- [Loading](https://dash.plotly.com/dash-core-components/loading.md): The dcc.Loading component displays a customizable loading spinner until the wrapped component has rendered.
+- [Location](https://dash.plotly.com/dash-core-components/location.md): The dcc.Location is a component that represents the browser's address bar, managing URL pathname and search for multi-page apps and navigati…
+- [Markdown](https://dash.plotly.com/dash-core-components/markdown.md): The dcc.Markdown component renders Markdown text, allowing for easy formatting and styling of text content.
+- [RadioItems](https://dash.plotly.com/dash-core-components/radioitems.md): The dcc.RadioItems component renders a set of radio buttons for single-option selection from multiple choices.
+- [RangeSlider](https://dash.plotly.com/dash-core-components/rangeslider.md): The dcc.RangeSlider component allows users to select a range of values between two pre-set values.
+- [Dash Core Components: Slider](https://dash.plotly.com/dash-core-components/slider.md): The dcc.Slider component lets users select a single value between two pre-set values.
+- [Store](https://dash.plotly.com/dash-core-components/store.md): dcc.Store is a component for storing JSON-serializable data inside the user's browser.
+- [Tab](https://dash.plotly.com/dash-core-components/tab.md): dcc.Tab is a component for creating individual tabs within a tabbed interface, allowing for organized content sections.
+- [Tabs](https://dash.plotly.com/dash-core-components/tabs.md): dcc.Tabs is a component that creates a tabbed interface, enabling users to switch between different views or sections.
+- [Dash Core Components: Textarea](https://dash.plotly.com/dash-core-components/textarea.md): The dcc.Textarea component creates a multi-line text input field for entering large amounts of text.
+- [Tooltip](https://dash.plotly.com/dash-core-components/tooltip.md): dcc.Tooltip is a component that precisely places tooltips on figures, designed for dcc.Graph and compatible with other graph and diagram com…
+- [Upload](https://dash.plotly.com/dash-core-components/upload.md): The dcc.Upload component provides a file upload interface, allowing users to upload files to the app.
+- [Dash HTML Components: Overview](https://dash.plotly.com/dash-html-components.md): Dash provides HTML tags as user-friendly Python classes.
+- [A](https://dash.plotly.com/dash-html-components/a.md): Official examples and reference documentation for html.A.
+- [Abbr](https://dash.plotly.com/dash-html-components/abbr.md): Official examples and reference documentation for html.Abbr.
+- [Acronym](https://dash.plotly.com/dash-html-components/acronym.md): Official examples and reference documentation for html.Acronym.
+- [Address](https://dash.plotly.com/dash-html-components/address.md): Official examples and reference documentation for html.Address.
+- [Area](https://dash.plotly.com/dash-html-components/area.md): Official examples and reference documentation for html.Area.
+- [Article](https://dash.plotly.com/dash-html-components/article.md): Official examples and reference documentation for html.Article.
+- [Aside](https://dash.plotly.com/dash-html-components/aside.md): Official examples and reference documentation for html.Aside.
+- [Audio](https://dash.plotly.com/dash-html-components/audio.md): Official examples and reference documentation for html.Audio.
+- [B](https://dash.plotly.com/dash-html-components/b.md): Official examples and reference documentation for html.B.
+- [Base](https://dash.plotly.com/dash-html-components/base.md): Official examples and reference documentation for html.Base.
+- [Basefont](https://dash.plotly.com/dash-html-components/basefont.md): Official examples and reference documentation for html.Basefont.
+- [Bdi](https://dash.plotly.com/dash-html-components/bdi.md): Official examples and reference documentation for html.Bdi.
+- [Bdo](https://dash.plotly.com/dash-html-components/bdo.md): Official examples and reference documentation for html.Bdo.
+- [Big](https://dash.plotly.com/dash-html-components/big.md): Official examples and reference documentation for html.Big.
+- [Blink](https://dash.plotly.com/dash-html-components/blink.md): Official examples and reference documentation for html.Blink.
+- [Blockquote](https://dash.plotly.com/dash-html-components/blockquote.md): Official examples and reference documentation for html.Blockquote.
+- [Br](https://dash.plotly.com/dash-html-components/br.md): Official examples and reference documentation for html.Br.
+- [Dash HTML Components: Button](https://dash.plotly.com/dash-html-components/button.md): Official examples and reference documentation for html.Button.
+- [Canvas](https://dash.plotly.com/dash-html-components/canvas.md): Official examples and reference documentation for html.Canvas.
+- [Caption](https://dash.plotly.com/dash-html-components/caption.md): Official examples and reference documentation for html.Caption.
+- [Center](https://dash.plotly.com/dash-html-components/center.md): Official examples and reference documentation for html.Center.
+- [Cite](https://dash.plotly.com/dash-html-components/cite.md): Official examples and reference documentation for html.Cite.
+- [Code](https://dash.plotly.com/dash-html-components/code.md): Official examples and reference documentation for html.Code.
+- [Col](https://dash.plotly.com/dash-html-components/col.md): Official examples and reference documentation for html.Col.
+- [Colgroup](https://dash.plotly.com/dash-html-components/colgroup.md): Official examples and reference documentation for html.Colgroup.
+- [Content](https://dash.plotly.com/dash-html-components/content.md): Official examples and reference documentation for html.Content.
+- [Data](https://dash.plotly.com/dash-html-components/data.md): Official examples and reference documentation for html.Data.
+- [Datalist](https://dash.plotly.com/dash-html-components/datalist.md): Official examples and reference documentation for html.Datalist.
+- [Dd](https://dash.plotly.com/dash-html-components/dd.md): Official examples and reference documentation for html.Dd.
+- [Del](https://dash.plotly.com/dash-html-components/del.md): Official examples and reference documentation for html.Del.
+- [Details](https://dash.plotly.com/dash-html-components/details.md): Official examples and reference documentation for html.Details.
+- [Dfn](https://dash.plotly.com/dash-html-components/dfn.md): Official examples and reference documentation for html.Dfn.
+- [Dialog](https://dash.plotly.com/dash-html-components/dialog.md): Official examples and reference documentation for html.Dialog.
+- [Div](https://dash.plotly.com/dash-html-components/div.md): Official examples and reference documentation for html.Div.
+- [Dl](https://dash.plotly.com/dash-html-components/dl.md): Official examples and reference documentation for html.Dl.
+- [Dt](https://dash.plotly.com/dash-html-components/dt.md): Official examples and reference documentation for html.Dt.
+- [Em](https://dash.plotly.com/dash-html-components/em.md): Official examples and reference documentation for html.Em.
+- [Embed](https://dash.plotly.com/dash-html-components/embed.md): Official examples and reference documentation for html.Embed.
+- [Fieldset](https://dash.plotly.com/dash-html-components/fieldset.md): Official examples and reference documentation for html.Fieldset.
+- [Figcaption](https://dash.plotly.com/dash-html-components/figcaption.md): Official examples and reference documentation for html.Figcaption.
+- [Figure](https://dash.plotly.com/dash-html-components/figure.md): Official examples and reference documentation for html.Figure.
+- [Font](https://dash.plotly.com/dash-html-components/font.md): Official examples and reference documentation for html.Font.
+- [Footer](https://dash.plotly.com/dash-html-components/footer.md): Official examples and reference documentation for html.Footer.
+- [Form](https://dash.plotly.com/dash-html-components/form.md): Official examples and reference documentation for html.Form.
+- [Frame](https://dash.plotly.com/dash-html-components/frame.md): Official examples and reference documentation for html.Frame.
+- [Frameset](https://dash.plotly.com/dash-html-components/frameset.md): Official examples and reference documentation for html.Frameset.
+- [H1](https://dash.plotly.com/dash-html-components/h1.md): Official examples and reference documentation for html.H1.
+- [H2](https://dash.plotly.com/dash-html-components/h2.md): Official examples and reference documentation for html.H2.
+- [H3](https://dash.plotly.com/dash-html-components/h3.md): Official examples and reference documentation for html.H3.
+- [H4](https://dash.plotly.com/dash-html-components/h4.md): Official examples and reference documentation for html.H4.
+- [H5](https://dash.plotly.com/dash-html-components/h5.md): Official examples and reference documentation for html.H5.
+- [H6](https://dash.plotly.com/dash-html-components/h6.md): Official examples and reference documentation for html.H6.
+- [Header](https://dash.plotly.com/dash-html-components/header.md): Official examples and reference documentation for html.Header.
+- [Hgroup](https://dash.plotly.com/dash-html-components/hgroup.md): Official examples and reference documentation for html.Hgroup.
+- [Hr](https://dash.plotly.com/dash-html-components/hr.md): Official examples and reference documentation for html.Hr.
+- [I](https://dash.plotly.com/dash-html-components/i.md): Official examples and reference documentation for html.I.
+- [Iframe](https://dash.plotly.com/dash-html-components/iframe.md): Official examples and reference documentation for html.Iframe.
+- [Img](https://dash.plotly.com/dash-html-components/img.md): Official examples and reference documentation for html.Img.
+- [Ins](https://dash.plotly.com/dash-html-components/ins.md): Official examples and reference documentation for html.Ins.
+- [Kbd](https://dash.plotly.com/dash-html-components/kbd.md): Official examples and reference documentation for html.Kbd.
+- [Keygen](https://dash.plotly.com/dash-html-components/keygen.md): Official examples and reference documentation for html.Keygen.
+- [Label](https://dash.plotly.com/dash-html-components/label.md): Official examples and reference documentation for html.Label.
+- [Legend](https://dash.plotly.com/dash-html-components/legend.md): Official examples and reference documentation for html.Legend.
+- [Li](https://dash.plotly.com/dash-html-components/li.md): Official examples and reference documentation for html.Li.
+- [Dash HTML Components: Link](https://dash.plotly.com/dash-html-components/link.md): Official examples and reference documentation for html.Link.
+- [Main](https://dash.plotly.com/dash-html-components/main.md): Official examples and reference documentation for html.Main.
+- [MapEl](https://dash.plotly.com/dash-html-components/mapel.md): Official examples and reference documentation for html.MapEl.
+- [Mark](https://dash.plotly.com/dash-html-components/mark.md): Official examples and reference documentation for html.Mark.
+- [Marquee](https://dash.plotly.com/dash-html-components/marquee.md): Official examples and reference documentation for html.Marquee.
+- [Meta](https://dash.plotly.com/dash-html-components/meta.md): Official examples and reference documentation for html.Meta.
+- [Meter](https://dash.plotly.com/dash-html-components/meter.md): Official examples and reference documentation for html.Meter.
+- [Nav](https://dash.plotly.com/dash-html-components/nav.md): Official examples and reference documentation for html.Nav.
+- [Nobr](https://dash.plotly.com/dash-html-components/nobr.md): Official examples and reference documentation for html.Nobr.
+- [Noscript](https://dash.plotly.com/dash-html-components/noscript.md): Official examples and reference documentation for html.Noscript.
+- [ObjectEl](https://dash.plotly.com/dash-html-components/objectel.md): Official examples and reference documentation for html.ObjectEl.
+- [Ol](https://dash.plotly.com/dash-html-components/ol.md): Official examples and reference documentation for html.Ol.
+- [Optgroup](https://dash.plotly.com/dash-html-components/optgroup.md): Official examples and reference documentation for html.Optgroup.
+- [Option](https://dash.plotly.com/dash-html-components/option.md): Official examples and reference documentation for html.Option.
+- [Output](https://dash.plotly.com/dash-html-components/output.md): Official examples and reference documentation for html.Output.
+- [P](https://dash.plotly.com/dash-html-components/p.md): Official examples and reference documentation for html.P.
+- [Param](https://dash.plotly.com/dash-html-components/param.md): Official examples and reference documentation for html.Param.
+- [Picture](https://dash.plotly.com/dash-html-components/picture.md): Official examples and reference documentation for html.Picture.
+- [Plaintext](https://dash.plotly.com/dash-html-components/plaintext.md): Official examples and reference documentation for html.Plaintext.
+- [Pre](https://dash.plotly.com/dash-html-components/pre.md): Official examples and reference documentation for html.Pre.
+- [Progress](https://dash.plotly.com/dash-html-components/progress.md): Official examples and reference documentation for html.Progress.
+- [Q](https://dash.plotly.com/dash-html-components/q.md): Official examples and reference documentation for html.Q.
+- [Rb](https://dash.plotly.com/dash-html-components/rb.md): Official examples and reference documentation for html.Rb.
+- [Rp](https://dash.plotly.com/dash-html-components/rp.md): Official examples and reference documentation for html.Rp.
+- [Rt](https://dash.plotly.com/dash-html-components/rt.md): Official examples and reference documentation for html.Rt.
+- [Rtc](https://dash.plotly.com/dash-html-components/rtc.md): Official examples and reference documentation for html.Rtc.
+- [Ruby](https://dash.plotly.com/dash-html-components/ruby.md): Official examples and reference documentation for html.Ruby.
+- [S](https://dash.plotly.com/dash-html-components/s.md): Official examples and reference documentation for html.S.
+- [Samp](https://dash.plotly.com/dash-html-components/samp.md): Official examples and reference documentation for html.Samp.
+- [Script](https://dash.plotly.com/dash-html-components/script.md): Official examples and reference documentation for html.Script.
+- [Section](https://dash.plotly.com/dash-html-components/section.md): Official examples and reference documentation for html.Section.
+- [Select](https://dash.plotly.com/dash-html-components/select.md): Official examples and reference documentation for html.Select.
+- [Shadow](https://dash.plotly.com/dash-html-components/shadow.md): Official examples and reference documentation for html.Shadow.
+- [Slot](https://dash.plotly.com/dash-html-components/slot.md): Official examples and reference documentation for html.Slot.
+- [Small](https://dash.plotly.com/dash-html-components/small.md): Official examples and reference documentation for html.Small.
+- [Source](https://dash.plotly.com/dash-html-components/source.md): Official examples and reference documentation for html.Source.
+- [Spacer](https://dash.plotly.com/dash-html-components/spacer.md): Official examples and reference documentation for html.Spacer.
+- [Span](https://dash.plotly.com/dash-html-components/span.md): Official examples and reference documentation for html.Span.
+- [Strike](https://dash.plotly.com/dash-html-components/strike.md): Official examples and reference documentation for html.Strike.
+- [Strong](https://dash.plotly.com/dash-html-components/strong.md): Official examples and reference documentation for html.Strong.
+- [Sub](https://dash.plotly.com/dash-html-components/sub.md): Official examples and reference documentation for html.Sub.
+- [Summary](https://dash.plotly.com/dash-html-components/summary.md): Official examples and reference documentation for html.Summary.
+- [Sup](https://dash.plotly.com/dash-html-components/sup.md): Official examples and reference documentation for html.Sup.
+- [Table](https://dash.plotly.com/dash-html-components/table.md): Official examples and reference documentation for html.Table.
+- [Tbody](https://dash.plotly.com/dash-html-components/tbody.md): Official examples and reference documentation for html.Tbody.
+- [Td](https://dash.plotly.com/dash-html-components/td.md): Official examples and reference documentation for html.Td.
+- [Template](https://dash.plotly.com/dash-html-components/template.md): Official examples and reference documentation for html.Template.
+- [Dash HTML Components: Textarea](https://dash.plotly.com/dash-html-components/textarea.md): Official examples and reference documentation for html.Textarea.
+- [Tfoot](https://dash.plotly.com/dash-html-components/tfoot.md): Official examples and reference documentation for html.Tfoot.
+- [Th](https://dash.plotly.com/dash-html-components/th.md): Official examples and reference documentation for html.Th.
+- [Thead](https://dash.plotly.com/dash-html-components/thead.md): Official examples and reference documentation for html.Thead.
+- [Time](https://dash.plotly.com/dash-html-components/time.md): Official examples and reference documentation for html.Time.
+- [Title](https://dash.plotly.com/dash-html-components/title.md): Official examples and reference documentation for html.Title.
+- [Tr](https://dash.plotly.com/dash-html-components/tr.md): Official examples and reference documentation for html.Tr.
+- [Track](https://dash.plotly.com/dash-html-components/track.md): Official examples and reference documentation for html.Track.
+- [U](https://dash.plotly.com/dash-html-components/u.md): Official examples and reference documentation for html.U.
+- [Ul](https://dash.plotly.com/dash-html-components/ul.md): Official examples and reference documentation for html.Ul.
+- [Var](https://dash.plotly.com/dash-html-components/var.md): Official examples and reference documentation for html.Var.
+- [Video](https://dash.plotly.com/dash-html-components/video.md): Official examples and reference documentation for html.Video.
+- [Wbr](https://dash.plotly.com/dash-html-components/wbr.md): Official examples and reference documentation for html.Wbr.
+- [Xmp](https://dash.plotly.com/dash-html-components/xmp.md): Official examples and reference documentation for html.Xmp.
+- [Overview and Installation](https://dash.plotly.com/dash-ag-grid.md): How to install Dash AG Grid, a high-performance and highly customizable component based on AG Grid.
+- [Migration guides](https://dash.plotly.com/dash-ag-grid/migration-guide.md): Guides for migrating from one version of dash-ag-grid to another.
+- [Dash AG Grid: Getting Started](https://dash.plotly.com/dash-ag-grid/getting-started.md): Getting started with Dash AG Grid
+- [JavaScript and Dash AG Grid](https://dash.plotly.com/dash-ag-grid/javascript-and-the-grid.md): Getting started with Dash AG Grid
+- [Troubleshooting](https://dash.plotly.com/dash-ag-grid/troubleshooting.md): Troubleshooting issues with your grid
+- [Dash AG Grid: Reference](https://dash.plotly.com/dash-ag-grid/reference.md): Complete reference for Dash AG Grid
+- [Column Definitions](https://dash.plotly.com/dash-ag-grid/column-definitions.md): How to create columns in Dash AG Grid
+- [Updating Column Definitions](https://dash.plotly.com/dash-ag-grid/updating-column-definitions.md): How to update column definitions in Dash AG Grid
+- [Column State](https://dash.plotly.com/dash-ag-grid/column-state.md): Working with column state in Dash AG Grid
+- [Column Headers](https://dash.plotly.com/dash-ag-grid/column-headers.md): Configuring column headers in Dash AG Grid
+- [Column Groups](https://dash.plotly.com/dash-ag-grid/column-groups.md): Working with column grouping in Dash AG Grid
+- [Column Sizing](https://dash.plotly.com/dash-ag-grid/column-sizing.md): Sizing columns in Dash AG Grid
+- [Column Moving](https://dash.plotly.com/dash-ag-grid/column-moving.md): Moving columns in Dash AG Grid
+- [Cell Data Types](https://dash.plotly.com/dash-ag-grid/cell-data-types.md): How to use cell data types in Dash AG Grid
+- [Column Pinning](https://dash.plotly.com/dash-ag-grid/column-pinning.md): How to pin columns in Dash AG Grid
+- [Column Spanning](https://dash.plotly.com/dash-ag-grid/column-spanning.md): Column spanning in Dash AG Grid
+- [Row IDs](https://dash.plotly.com/dash-ag-grid/row-ids.md): How the grid assigns row IDs
+- [Row Sorting](https://dash.plotly.com/dash-ag-grid/row-sorting.md): How to sort row data in Dash AG Grid
+- [Row Spanning](https://dash.plotly.com/dash-ag-grid/row-spanning.md): Allow cells to span multiple rows
+- [Full Width Rows](https://dash.plotly.com/dash-ag-grid/full-width-rows.md): How to create full width rows
+- [Row Pinning](https://dash.plotly.com/dash-ag-grid/row-pinning.md): Pin rows at the top or bottom of a grid
+- [Row Height](https://dash.plotly.com/dash-ag-grid/row-height.md): Working with row height in Dash AG Grid
+- [Row Dragging](https://dash.plotly.com/dash-ag-grid/row-dragging.md): Rearranging rows by dragging them
+- [Row Dragging - External Dropzone](https://dash.plotly.com/dash-ag-grid/row-dragging-external-dropzone.md): Drag and drop rows in an external dropzone - Including grid to grid
+- [Introduction to Theming](https://dash.plotly.com/dash-ag-grid/styling-themes.md): Dash AG Grid styling examples using themes
+- [Styling Color and Font](https://dash.plotly.com/dash-ag-grid/styling-color-font.md): Change the color scheme in Dash AG Grid
+- [Styling Selections](https://dash.plotly.com/dash-ag-grid/styling-selections.md): Configure the appearance of selected rows and columns
+- [Styling Headers](https://dash.plotly.com/dash-ag-grid/styling-headers.md): Styling grid header cells and column groups in Dash AG Grid
+- [Styling Borders](https://dash.plotly.com/dash-ag-grid/styling-borders.md): Dash AG Grid border styling examples
+- [Compactness](https://dash.plotly.com/dash-ag-grid/compactness.md): Add more white space or pack more data into the UI
+- [Custom Icons at Global Level](https://dash.plotly.com/dash-ag-grid/custom-icons-global.md): Provide custom icons at global level
+- [Styling Inputs and Widgets](https://dash.plotly.com/dash-ag-grid/styling-inputs.md): Styling text inputs, checkboxes, toggle buttons and range sliders.
+- [Styling Menus and Popups](https://dash.plotly.com/dash-ag-grid/styling-popups.md): Style UI elements that float above the main UI, including menus
+- [Styling Rows](https://dash.plotly.com/dash-ag-grid/styling-rows.md): Dash AG Grid row styling examples
+- [Styling Cells](https://dash.plotly.com/dash-ag-grid/styling-cells.md): Styling cells with Dash AG Grid
+- [Custom Icons at Grid Level](https://dash.plotly.com/dash-ag-grid/custom-icons-grid.md): Provide custom icons at grid/column level
+- [Grid Size](https://dash.plotly.com/dash-ag-grid/grid-size.md): Configuring the size of the grid
+- [Printing](https://dash.plotly.com/dash-ag-grid/printing.md): Dash AG Grid printer friendly layout examples
+- [Row Models Overview](https://dash.plotly.com/dash-ag-grid/row-models.md): Row models in Dash AG Grid
+- [Client-Side Row Model](https://dash.plotly.com/dash-ag-grid/client-side.md): Client-Side row model in Dash AG Grid
+- [Infinite Row Model (Server-Side)](https://dash.plotly.com/dash-ag-grid/infinite-row-model.md): Infinite row model in Dash AG Grid
+- [Row Selection: Overview](https://dash.plotly.com/dash-ag-grid/row-selection.md): Configure the grid to allow users to select rows.
+- [Single Row Selection](https://dash.plotly.com/dash-ag-grid/single-row-selection.md): Enable users to select a single row within a grid.
+- [Multi-Row Selection](https://dash.plotly.com/dash-ag-grid/multi-row-selection.md): Enable users to select many rows at once within a grid.
+- [Row Selection and Callbacks](https://dash.plotly.com/dash-ag-grid/row-selection-callbacks.md): Use Callbacks to select/deselect rows and remove selected rows within a grid.
+- [Cell Selection](https://dash.plotly.com/dash-ag-grid/cell-selection.md): Trigger callbacks by clicking on a cell and disable cell focus
+- [Cell Text Selection](https://dash.plotly.com/dash-ag-grid/text-selection.md): Text selections in Dash AG Grid
+- [Filtering: Overview](https://dash.plotly.com/dash-ag-grid/filtering-overview.md): Filtering in Dash AG Grid
+- [Column Filters: Overview](https://dash.plotly.com/dash-ag-grid/column-filters.md): Column filtering in Dash AG Grid
+- [Text Filter](https://dash.plotly.com/dash-ag-grid/text-filters.md): Text filters in Dash AG Grid
+- [Number Filters](https://dash.plotly.com/dash-ag-grid/number-filters.md): Number filters in Dash AG Grid
+- [Date Filters](https://dash.plotly.com/dash-ag-grid/date-filters.md): Date filters in Dash AG Grid
+- [Filter Conditions](https://dash.plotly.com/dash-ag-grid/filter-conditions.md): Filter Conditions in Dash AG Grid
+- [Applying Filters](https://dash.plotly.com/dash-ag-grid/applying-filters.md): Applying Filters in Dash AG Grid
+- [Floating Filters](https://dash.plotly.com/dash-ag-grid/floating-filters.md): Floating filters in Dash AG Grid
+- [Filter Model & Dash Callbacks](https://dash.plotly.com/dash-ag-grid/callback-filters.md): Filter Model & Dash Callbacks
+- [Quick Filters](https://dash.plotly.com/dash-ag-grid/quick-filters.md): Quick filters in Dash AG Grid
+- [External Filter](https://dash.plotly.com/dash-ag-grid/external-filter.md): External filter in Dash AG Grid
+- [Custom Column Filters](https://dash.plotly.com/dash-ag-grid/custom-column-filters.md): Custom components for column filters in Dash AG Grid
+- [Value Getters](https://dash.plotly.com/dash-ag-grid/value-getters.md): Using value getters in Dash AG Grid
+- [Value Formatters](https://dash.plotly.com/dash-ag-grid/value-formatters.md): Using value formatters in Dash AG Grid
+- [D3 Value Formatters](https://dash.plotly.com/dash-ag-grid/d3-value-formatters.md): Using value formatters with D3 format in Dash AG Grid
+- [Custom Function Value Formatters](https://dash.plotly.com/dash-ag-grid/custom-functions-value-formatters.md): Using custom functions with value formatters in Dash AG Grid
+- [Cell Rendering](https://dash.plotly.com/dash-ag-grid/cell-rendering.md): Customize the cell rendering in Dash AG Grid
+- [Flashing Cells](https://dash.plotly.com/dash-ag-grid/flashing-cells.md): How to flash cells to highlight data changes in Dash AG Grid.
+- [Tooltips](https://dash.plotly.com/dash-ag-grid/tooltips.md): Add tooltips to the grid
+- [Cell Editing](https://dash.plotly.com/dash-ag-grid/cell-editing.md): Overview of cell editing in Dash AG Grid
+- [Editing and Callbacks](https://dash.plotly.com/dash-ag-grid/editing-and-callbacks.md): Accessing edited data in a Dash callback
+- [Start / Stop Cell Editing](https://dash.plotly.com/dash-ag-grid/start-stop-editing.md): Starting and stopping cell editing in Dash AG Grid
+- [Parsing Values](https://dash.plotly.com/dash-ag-grid/parsing-values.md): Parsing values in Dash AG Grid
+- [Saving Values](https://dash.plotly.com/dash-ag-grid/saving-values.md): ValueSetters in Dash AG Grid
+- [Cell Editors](https://dash.plotly.com/dash-ag-grid/cell-editors.md): Cell Editors in Dash AG Grid
+- [Provided Cell Editors](https://dash.plotly.com/dash-ag-grid/provided-cell-editors.md): Provided Cell Editors in Dash AG Grid
+- [Undo and Redo Cell Edits](https://dash.plotly.com/dash-ag-grid/undo-redo-edits.md): How to allow users to undo / redo their cell edits.
+- [Full Row Editing](https://dash.plotly.com/dash-ag-grid/editing-full-row.md): Enable full row editing to allow users to edit an entire row of data
+- [CSV](https://dash.plotly.com/dash-ag-grid/export-data-csv.md): Exporting to CSV with Dash AG Grid
+- [Copying to the Clipboard](https://dash.plotly.com/dash-ag-grid/clipboard.md): Copying from the grid using `dcc.Clipboard` and regular text selection.
+- [Cell Renderer Components](https://dash.plotly.com/dash-ag-grid/cell-renderer-components.md): Cell renderer components in Dash AG Grid
+- [Markdown Component](https://dash.plotly.com/dash-ag-grid/markdown-component.md): Markdown component in Dash AG Grid
+- [Cell Editor Components](https://dash.plotly.com/dash-ag-grid/cell-editor-components.md): Cell editor components in Dash AG Grid
+- [Many Renderer Components One Column](https://dash.plotly.com/dash-ag-grid/many-renderer-components.md): Many renderer components in one column in Dash AG Grid
+- [Row Menu](https://dash.plotly.com/dash-ag-grid/row-menu.md): Row menu component in Dash AG Grid
+- [Tooltip Component](https://dash.plotly.com/dash-ag-grid/component-tooltip.md): Custom tooltip component in Dash AG Grid
+- [Overlay Component](https://dash.plotly.com/dash-ag-grid/overlay-component.md): Overlay component in Dash AG Grid
+- [Pagination](https://dash.plotly.com/dash-ag-grid/pagination.md): Pagination in Dash AG Grid
+- [Aligned Grids](https://dash.plotly.com/dash-ag-grid/aligned-grids.md): Aligned Grids in Dash AG Grid
+- [Infinite Scroll](https://dash.plotly.com/dash-ag-grid/infinite-scroll.md): Infinite Scroll in Dash AG Grid
+- [Scrolling Performance](https://dash.plotly.com/dash-ag-grid/scrolling-performance.md): Improve The Grid Scrolling Performance
+- [Scroll To](https://dash.plotly.com/dash-ag-grid/scroll-to.md): Scroll to row in Dash AG Grid
+- [Persistence](https://dash.plotly.com/dash-ag-grid/persistence.md): Enabling persistence with Dash AG Grid
+- [Using AG Grid Enterprise](https://dash.plotly.com/dash-ag-grid/enterprise-ag-grid.md): How to enable AG Grid Enterprise modules in Dash AG Grid
+- [Sparklines](https://dash.plotly.com/dash-ag-grid/enterprise-sparklines.md): Creating mini charts using Sparklines in Dash AG Grid
+- [Master Detail](https://dash.plotly.com/dash-ag-grid/enterprise-master-detail.md): Nested Grids using Master Detail
+- [Group Cell Renderer](https://dash.plotly.com/dash-ag-grid/enterprise-group-cell-renderer.md): Configuring group cell renderers in Dash AG Grid
+- [Row Aggregation with Conditional Formatting](https://dash.plotly.com/dash-ag-grid/enterprise-row-aggregation.md): Row aggregation with conditional formatting in Dash AG Grid
+- [Aggregation with Custom Functions](https://dash.plotly.com/dash-ag-grid/enterprise-aggregation-custom-functions.md): Aggregation with custom functions in Dash AG Grid
+- [Row Groupings](https://dash.plotly.com/dash-ag-grid/enterprise-row-grouping.md): Row groupings in Dash AG Grid
+- [Sidebar](https://dash.plotly.com/dash-ag-grid/enterprise-sidebar.md): Using the enterprise Sidebar feature in Dash AG Grid
+- [Pivot](https://dash.plotly.com/dash-ag-grid/enterprise-pivot.md): Using pivot in Dash AG Grid
+- [Tree Data](https://dash.plotly.com/dash-ag-grid/enterprise-tree-data.md): Displaying data with parent-child relationships in Dash AG Grid.
+- [Set Filter: Overview](https://dash.plotly.com/dash-ag-grid/enterprise-set-filter-overview.md): Enabling the enterprise Set Filter feature in Dash AG Grid.
+- [Filter List](https://dash.plotly.com/dash-ag-grid/enterprise-set-filter-list.md): Enabling the enterprise Set Filter feature in Dash AG Grid.
+- [Data Updates](https://dash.plotly.com/dash-ag-grid/enterprise-set-filter-data-updates.md): Updating data with the enterprise Set Filter feature in Dash AG Grid.
+- [Excel Mode](https://dash.plotly.com/dash-ag-grid/enterprise-set-filter-excel-mode.md): Enabling the Excel Mode in the enterprise Set Filter feature in Dash AG Grid.
+- [Virtual Row Data](https://dash.plotly.com/dash-ag-grid/virtual-row-data.md): Get Virtual Row Data
+- [Crossfilter](https://dash.plotly.com/dash-ag-grid/crossfilter.md): Crossfilter between Grid and Plots
+- [Dash DataTable: Overview](https://dash.plotly.com/datatable.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Dash DataTable: Reference](https://dash.plotly.com/datatable/reference.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [DataTable Height](https://dash.plotly.com/datatable/height.md): How to set the height of the DataTable.
+- [DataTable Width & Column Width](https://dash.plotly.com/datatable/width.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Dash DataTable: Styling](https://dash.plotly.com/datatable/style.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Number Formatting](https://dash.plotly.com/datatable/data-formatting.md): `DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Sorting, Filtering, Selecting, and Paging Natively](https://dash.plotly.com/datatable/interactivity.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [DataTable Tooltips](https://dash.plotly.com/datatable/tooltips.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Python-Driven Filtering, Paging, Sorting](https://dash.plotly.com/datatable/callbacks.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Editable DataTable](https://dash.plotly.com/datatable/editable.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Typing and User Input Processing](https://dash.plotly.com/datatable/typing.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Dropdowns Inside DataTable](https://dash.plotly.com/datatable/dropdowns.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Virtualization](https://dash.plotly.com/datatable/virtualization.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Filtering Syntax](https://dash.plotly.com/datatable/filtering.md): `dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.
+- [Dash Bio: Overview](https://dash.plotly.com/dash-bio.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Molecule2dViewer](https://dash.plotly.com/dash-bio/molecule2dviewer.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Molecule3dViewer](https://dash.plotly.com/dash-bio/molecule3dviewer.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [NglMoleculeViewer](https://dash.plotly.com/dash-bio/nglmoleculeviewer.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Speck](https://dash.plotly.com/dash-bio/speck.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Jsme](https://dash.plotly.com/dash-bio/jsme.md): Molecule editor that supports drawing and editing of molecules and reactions.
+- [AlignmentChart](https://dash.plotly.com/dash-bio/alignmentchart.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [NeedlePlot](https://dash.plotly.com/dash-bio/needleplot.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [OncoPrint](https://dash.plotly.com/dash-bio/oncoprint.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [SequenceViewer](https://dash.plotly.com/dash-bio/sequenceviewer.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [VolcanoPlot](https://dash.plotly.com/dash-bio/volcanoplot.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Circos](https://dash.plotly.com/dash-bio/circos.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Clustergram](https://dash.plotly.com/dash-bio/clustergram.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [FornaContainer](https://dash.plotly.com/dash-bio/fornacontainer.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Ideogram](https://dash.plotly.com/dash-bio/ideogram.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Igv](https://dash.plotly.com/dash-bio/igv.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [ManhattanPlot](https://dash.plotly.com/dash-bio/manhattanplot.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Pileup](https://dash.plotly.com/dash-bio/pileup.md): Dash Bio is a component library dedicated to visualizing bioinformatics data.
+- [Dash DAQ: Overview](https://dash.plotly.com/dash-daq.md): Beautifully styled technical components for data acquisition, monitoring, and engineering applications.
+- [BooleanSwitch](https://dash.plotly.com/dash-daq/booleanswitch.md): BooleanSwitch
+- [ColorPicker](https://dash.plotly.com/dash-daq/colorpicker.md): ColorPicker
+- [DarkThemeProvider](https://dash.plotly.com/dash-daq/darkthemeprovider.md): DarkThemeProvider
+- [Gauge](https://dash.plotly.com/dash-daq/gauge.md): Gauge
+- [GraduatedBar](https://dash.plotly.com/dash-daq/graduatedbar.md): GraduatedBar
+- [Indicator](https://dash.plotly.com/dash-daq/indicator.md): Indicator
+- [Joystick](https://dash.plotly.com/dash-daq/joystick.md): Joystick
+- [Knob](https://dash.plotly.com/dash-daq/knob.md): Knob
+- [LEDDisplay](https://dash.plotly.com/dash-daq/leddisplay.md): LEDDisplay
+- [NumericInput](https://dash.plotly.com/dash-daq/numericinput.md): NumericInput
+- [PowerButton](https://dash.plotly.com/dash-daq/powerbutton.md): PowerButton
+- [PrecisionInput](https://dash.plotly.com/dash-daq/precisioninput.md): PrecisionInput
+- [Dash DAQ: Slider](https://dash.plotly.com/dash-daq/slider.md): Slider
+- [StopButton](https://dash.plotly.com/dash-daq/stopbutton.md): StopButton
+- [Tank](https://dash.plotly.com/dash-daq/tank.md): Tank
+- [Thermometer](https://dash.plotly.com/dash-daq/thermometer.md): Thermometer
+- [ToggleSwitch](https://dash.plotly.com/dash-daq/toggleswitch.md): ToggleSwitch
+- [Dash Image Annotations: Overview & Reference](https://dash.plotly.com/annotations.md): Image Annotations for image processing applications.
+- [Dash Canvas: Overview & Reference](https://dash.plotly.com/canvas.md): Image rendering, drawing, annotations for image processing applications (legacy tool)
+- [Dash Slicer: Overview & Reference](https://dash.plotly.com/slicer.md): A volume slicer for Dash.
+- [Dash Player: Overview & Reference](https://dash.plotly.com/dash-player.md): Dash Component wrapping React-Player.
+- [Dash Cytoscape: Overview](https://dash.plotly.com/cytoscape.md): Dash Cytoscape is our network visualization component.
+- [Basic Usage & Elements](https://dash.plotly.com/cytoscape/elements.md): Overview of element declaration and manipulation.
+- [Layouts](https://dash.plotly.com/cytoscape/layout.md): Description of built-in layouts, and how to modify their properties.
+- [Dash Cytoscape: Styling](https://dash.plotly.com/cytoscape/styling.md): Methods to style elements with a CSS-like syntax.
+- [Callbacks](https://dash.plotly.com/cytoscape/callbacks.md): Methods to combine Dash callbacks to update your Cytoscape object.
+- [User Interactions](https://dash.plotly.com/cytoscape/events.md): Overview of user-interaction events that trigger callbacks in Dash, and how to use them to update the Cytoscape component.
+- [Biopython Examples](https://dash.plotly.com/cytoscape/biopython.md): Examples of applications in bioinformatics using Biopython.
+- [Exporting Images](https://dash.plotly.com/cytoscape/images.md): This example shows how to export your Cytoscape graphs as images (jpg, png, svg).
+- [Making responsive graphs](https://dash.plotly.com/cytoscape/responsive.md): This example shows how to build a responsive Cytoscape graph.
+- [Dash Cytoscape: Reference](https://dash.plotly.com/cytoscape/reference.md): Comprehensive list of all of the Cytoscape properties.
+- [Dash VTK: Overview](https://dash.plotly.com/vtk.md): Dash VTK enables Dash application developers to harness the power of Kitware's open source Visualization Toolkit when manipulating or displa…
+- [Intro to 3D Visualization](https://dash.plotly.com/vtk/intro.md): Introductory concepts about 3D visualization needed to understand how Dash VTK works.
+- [Structure of Datasets](https://dash.plotly.com/vtk/structure.md): Understand the structure of a dataset in Dash VTK.
+- [Representation Components](https://dash.plotly.com/vtk/representations.md): Dash VTK Components needed to generate a representation.
+- [Other Dash VTK Components](https://dash.plotly.com/vtk/other.md): Dash VTK Components that are not used for building representations.
+- [Click and Hover Callbacks](https://dash.plotly.com/vtk/click-hover.md): Learn to write callbacks based on user click and hovers.
+- [Advanced Demos](https://dash.plotly.com/vtk/advanced.md): Demos of more advanced usage of Dash VTK.
+- [Dash VTK: Reference](https://dash.plotly.com/vtk/reference.md): Comprehensive reference of all Dash VTK components.
+
+## Enterprise Libraries
+
+- [Dash Enterprise Auth](https://dash.plotly.com/app-authentication.md): Accessing User Authentication Data in your Dash app
+- [Dash Notes](https://dash.plotly.com/notes.md): A component for adding written and drawn notes to your Dash layout.
+
+## Databricks Integration
+
+- [Overview and Table of Contents](https://dash.plotly.com/databricks-integration.md): Integrate Dash apps with Databricks
+- [Connecting to a Databricks SQL Warehouse from Dash](https://dash.plotly.com/databricks-integration/sql-connector.md): Use the Databricks Python SQL Connector or SQLAlchemy to bring data from Databricks into your Dash app
+- [Executing Databricks Jobs using Plotly Dash](https://dash.plotly.com/databricks-integration/dash-with-databricks-jobs.md): Run jobs using the Databricks Jobs API from your Dash app
+
+## Third-Party Libraries
+
+- [Parallel Computing with Dash and Dask](https://dash.plotly.com/dask-dash.md): Enable scalable, parallel computing for your Dash app with Dask.
+- [HoloViews](https://dash.plotly.com/holoviews.md): HoloViews integration
+- [Dash Vega-Altair (Community Component)](https://dash.plotly.com/dash-vega-components.md): A brief tutorial on how to display Vega-Altair charts in a Dash app.
+
+## Creating Your Own Components
+
+- [React for Python Developers](https://dash.plotly.com/react-for-python-developers.md): A practical tutorial on how to create Dash Components in React and JavaScript/TypeScript aimed at Python developers, including language basi…
+- [Build Your Own Components](https://dash.plotly.com/build-your-own-components.md): Dash components are built with React.js.
+- [All-in-One Components](https://dash.plotly.com/all-in-one-components.md): The All-in-One Component Pattern allows for easy reuse of interactive components with callbacks across your apps.
+- [Writing Dash Plugins using Dash Hooks](https://dash.plotly.com/dash-plugins-using-hooks.md): How to write plugins for Dash that can be reused across multiple Dash apps.
+- [Integrating D3.js into Dash Components](https://dash.plotly.com/d3-react-components.md): Tutorials and resources on encapsulating D3.js graphs in Dash-friendly React components.
+- [Dash 3 for Component Developers](https://dash.plotly.com/dash-3-for-component-developers.md): Learn about the changes introduced in Dash 3 and how they impact component development.
+
+## Beyond the Basics
+
+- [Dash in Jupyter Environments](https://dash.plotly.com/dash-in-jupyter.md): How to run and configure Dash apps in Jupyter Notebooks and JupyterLab
+- [Performance](https://dash.plotly.com/performance.md): There are three main ways to speed up Dash apps: caching, using WebGL chart types, and implementing clientside callbacks.
+- [Live Updates](https://dash.plotly.com/live-updates.md): Update your apps on page load or on a predefined interval (e.g.
+- [Adding CSS & JS and Overriding the Page-Load Template](https://dash.plotly.com/external-resources.md): Learn how to add custom CSS and JS to your app as well as how to customize the HTML title, meta tags, and more.
+- [Multi-Page Apps and URL Support](https://dash.plotly.com/urls.md): Dash provides two components (`dcc.Link` and `dcc.Location`) that allow you to easily make fast multipage apps using its own Single Page App…
+- [Persisting User Preferences & Control Values](https://dash.plotly.com/persistence.md): (Released September 2019 with Dash 1.3) Save user choices across page reloads, or just when removing and re-adding a component.
+- [Dash Dev Tools](https://dash.plotly.com/devtools.md): Dash dev tools reference
+- [Loading States](https://dash.plotly.com/loading-states.md): Getting the loading state of a component and adding a loading component
+- [Dash Testing](https://dash.plotly.com/testing.md): An introduction to testing your dash app with selenium
+- [Dash App Lifecycle](https://dash.plotly.com/app-lifecycle.md): An overview of the lifecycle of a Dash app
+- [Dash App Monitoring](https://dash.plotly.com/app-monitoring.md): Enable Dash's health check endpoint for monitoring Dash server status
+- [Component Argument Order](https://dash.plotly.com/component-argument-order.md): An overview of the Dash convention for positional and keyword arguments in Dash components
+- [Component Properties](https://dash.plotly.com/component-properties.md): Enable component properties on your custom components to allow passing in other Dash components as properties, as seen in some Dash Core Com…
+- [Background Callback Caching](https://dash.plotly.com/background-callback-caching.md): Save and reuse the results of a function if it is called multiple times with the same arguments
+- [WebSocket Callbacks](https://dash.plotly.com/websocket-callbacks.md): Use WebSocket callbacks in Dash for real-time streaming, live progress updates, and reading component state mid-callback.
+- [Server Backends](https://dash.plotly.com/server-backends.md): Learn how to use Flask, FastAPI, or Quart as server backends for your Dash app, enabling async support and integration with existing web app…
+- [API Reference](https://dash.plotly.com/reference.md): The docstrings and options for the public methods of the `dash` module and the `app` object.
+- [What's New in Dash 4](https://dash.plotly.com/whats-new-in-dash-4.md): Overview of new features and changes in Dash 4.0
+- [Dash 3.0 Migration](https://dash.plotly.com/dash-3-0-migration.md): This section is for you if you currently use Dash 2.x in your apps and want to upgrade to Dash 3.0.
+- [Dash 2.0 Migration](https://dash.plotly.com/dash-2-0-migration.md): This section is for you if you currently use Dash 1.x in your apps and want to upgrade to Dash 2.0.
+- [Dash 1.0 Migration](https://dash.plotly.com/dash-1-0-migration.md): This guide is for Dash v0.x users upgrading to v1.0.
+
+## Production Capabilities
+
+- [Add Authentication to Your Dash App](https://dash.plotly.com/authentication.md): Protect your apps behind a login screen and access user authentication data in your Dash apps.
+- [Embed Your Dash App in Other Websites](https://dash.plotly.com/integrating-dash.md): Embed Dash apps into host (parent) apps like external websites.
+
+## Dash Enterprise Guide
+
+- [Dash Enterprise Guide: Overview](https://dash.plotly.com/dash-enterprise.md): Master Dash Enterprise with official documentation.
+- [Dash Enterprise Installation](https://dash.plotly.com/dash-enterprise/installation.md): Learn how to install Dash Enterprise on your Kubernetes cluster.
+- [GitHub](https://dash.plotly.com/dash-enterprise/github-integration.md): Integrate Dash Enterprise with your GitHub organization so that app source code is stored in GitHub repositories, upholding patterns, permis…
+- [Getting Started with Dash Enterprise](https://dash.plotly.com/dash-enterprise/getting-started.md): This page can help you understand what to expect as a new Dash Enterprise user, from logging in to leveraging platform features and Plotly-p…
+- [Preparing your App for Dash Enterprise](https://dash.plotly.com/dash-enterprise/preparing.md): Preparing app code that works locally into code that will run on Dash Enterprise
+- [Initialize Apps on Dash Enterprise](https://dash.plotly.com/dash-enterprise/initialize.md): Initialize apps on Dash Enterprise
+- [Deploy Apps to Dash Enterprise](https://dash.plotly.com/dash-enterprise/deployment.md): Deploy apps to Dash Enterprise
+- [Dash Enterprise 6 Highlights](https://dash.plotly.com/dash-enterprise/de6-highlights.md): An overview of what's new in Dash Enterprise 6 for users of the 5.X series.
+- [Dash Enterprise Guide: Changelog](https://dash.plotly.com/dash-enterprise/changelog.md): View the full list of changes to Dash Enterprise for each version.
+- [App Structure, Buildpacks, and Deployment Lifecycle: Overview](https://dash.plotly.com/dash-enterprise/application-structure.md): Ensure that your app meets all the requirements for deployment and learn about app lifecycles
+- [Dash App Structure](https://dash.plotly.com/dash-enterprise/application-structure/dash-app.md): Ensure that your Dash app meets all the requirements for deployment and learn how to configure buildpack files such as `Procfile`, `Aptfile`…
+- [Streamlit App Structure](https://dash.plotly.com/dash-enterprise/application-structure/streamlit-app.md): Ensure that your Streamlit app meets all the requirements for deployment
+- [Django App Structure](https://dash.plotly.com/dash-enterprise/application-structure/django-app.md): Ensure that your Django app meets all the requirements for deployment
+- [Deployment Lifecycle](https://dash.plotly.com/dash-enterprise/application-structure/deployment-lifecycle.md): Learn about the deployment lifecycle of an app on Dash Enterprise
+- [App Portal](https://dash.plotly.com/dash-enterprise/portal.md): Learn about the App Portal.
+- [The Deployed App Environment](https://dash.plotly.com/dash-enterprise/app-environment.md): Learn about the environment that your apps run in when they are deployed to Dash Enterprise, and how to customize this environment.
+- [Workload Identity for Apps](https://dash.plotly.com/dash-enterprise/workload-identity-apps.md): Learn how to configure deployed apps to assume the role of a Kubernetes service account.
+- [Managing Data Sources](https://dash.plotly.com/dash-enterprise/managing-data-sources.md): Data sources allow you to share data stored in various cloud providers with other licensed users.
+- [Adding Redis to an App](https://dash.plotly.com/dash-enterprise/redis-database.md): Redis is a powerful in-memory store that is well-suited for Dash apps.
+- [Adding Postgres to an App](https://dash.plotly.com/dash-enterprise/postgres.md): Postgres is a powerful object-relational database system that is well-suited for Dash apps.
+- [Connect a Dash App to an SQL Database](https://dash.plotly.com/dash-enterprise/database-connections.md): Learn how to manage external database connections, perform queries with Dash callbacks, and maintain SQL best practices.
+- [Environment Variables](https://dash.plotly.com/dash-enterprise/environment-variables.md): Environment variables are commonly used to store secret variables like database passwords.
+- [Viewer Access](https://dash.plotly.com/dash-enterprise/privacy.md): Learn how to manage who can view your apps.
+- [App Co-owners](https://dash.plotly.com/dash-enterprise/app-co-owners.md): Add co-owners to develop and manage apps in collaboration with others
+- [Persistent Filesystem](https://dash.plotly.com/dash-enterprise/persistent-filesystem.md): Persistent filesystems provide persistent, fast storage for data files for apps and workspaces.
+- [Adding Static Assets](https://dash.plotly.com/dash-enterprise/static-assets.md): Learn how to include custom CSS, JS, and images in apps that you're deploying to Dash Enterprise.
+- [Scaling Your App](https://dash.plotly.com/dash-enterprise/scale.md): Scale your app horizontally or vertically, and learn about how scaling impacts memory usage
+- [Developing Apps when Dash Enterprise Is Internet-Restricted](https://dash.plotly.com/dash-enterprise/airgapped.md): How to use Dash Enterprise when it does not have internet access (airgapped)
+- [Adding Private Python Packages](https://dash.plotly.com/dash-enterprise/private-packages.md): Learn how to change where your app's Python package dependencies are installed from, when the default PyPI.org is not appropriate or not all…
+- [Creating a Staging App](https://dash.plotly.com/dash-enterprise/staging-app.md): Use a staging app to test changes before updating your production app.
+- [App Viewer Analytics](https://dash.plotly.com/dash-enterprise/app-analytics.md): The Viewer Analytics section of the App Info displays view count information for your app.
+- [Linking a Celery Process](https://dash.plotly.com/dash-enterprise/celery-process.md): Add a task queue to your Dash apps.
+- [About & Table of Contents](https://dash.plotly.com/workspaces.md): Overview
+- [Using Workspaces](https://dash.plotly.com/workspaces/usage.md)
+- [Using the IDE](https://dash.plotly.com/workspaces/ide.md): Learn how to use the Workspaces IDE, including how to work with files and the workspace terminal.
+- [Development App](https://dash.plotly.com/workspaces/development-app.md): How to run and preview your app in a workspace
+- [Services with Workspaces](https://dash.plotly.com/workspaces/services.md)
+- [Schema Browser in Workspaces](https://dash.plotly.com/workspaces/schema-browser.md): How to use the Schema Browser in App Workspaces to display the contents of data sources.
+- [Cloning Repositories into a Workspace](https://dash.plotly.com/workspaces/cloning.md)
+- [Python Package Management](https://dash.plotly.com/workspaces/python-package-management.md)
+- [APT Package Management](https://dash.plotly.com/workspaces/apt-package-management.md)
+- [Deploying Changes](https://dash.plotly.com/workspaces/deploying-changes.md)
+- [Warnings & Limitations](https://dash.plotly.com/workspaces/warnings.md)
+- [Workspaces for Troubleshooting](https://dash.plotly.com/workspaces/for-troubleshooting.md): Overview
+- [Dash Enterprise Workspaces: Changelog](https://dash.plotly.com/workspaces/changelog.md): View the full list of changes to Workspaces for each version.
+- [Table of Contents](https://dash.plotly.com/jupyter-notebooks.md)
+- [Jupyter Notebooks in Workspaces: Getting Started](https://dash.plotly.com/jupyter-notebooks/getting-started.md)
+- [Running SQL Queries in Notebooks](https://dash.plotly.com/jupyter-notebooks/sql-cell.md)
+- [Using Dash in Jupyter and Workspaces](https://dash.plotly.com/jupyter-notebooks/using-dash.md)
+- [Visualizing Plotly Graphs](https://dash.plotly.com/jupyter-notebooks/visualizing-plotly-graphs.md)
+- [Exporting Static Images](https://dash.plotly.com/jupyter-notebooks/static-images.md): Use Kaleido with Plotly.py to export static images from Plotly figures
+- [Keyboard Shortcuts](https://dash.plotly.com/jupyter-notebooks/keyboard-shortcuts.md)
+- [Known Issues and Limitations](https://dash.plotly.com/jupyter-notebooks/limitations.md)
+- [Using Keycloak](https://dash.plotly.com/dash-enterprise/keycloak.md): What you need to know about Keycloak as a Dash Enterprise administrator.
+- [License and License Seats](https://dash.plotly.com/dash-enterprise/license-seats.md)
+- [Setting Up Native Keycloak Authentication](https://dash.plotly.com/dash-enterprise/native-auth.md): Learn how to set up native Keycloak authentication.
+- [Mapping Your IdP Groups](https://dash.plotly.com/dash-enterprise/idp-group-mapping.md): Learn how to map the groups in your IdP for use in Dash Enterprise.
+- [Managing Inactive Users and App Ownership](https://dash.plotly.com/dash-enterprise/app-transfers.md): In the event that a user stops using Dash Enterprise, you can transfer their apps and delete the user.
+- [Roles and Permissions](https://dash.plotly.com/dash-enterprise/roles.md): Roles and permissions determine what users can do in Dash Enterprise.
+- [Setting Up SSH Keys](https://dash.plotly.com/dash-enterprise/ssh.md): You need to set up SSH keys in order to deploy apps to Dash Enterprise over SSH.
+- [Managing Apps from the Command Line](https://dash.plotly.com/dash-enterprise/cli.md): Manage apps from the command line with the Dash Enterprise command line interface (CLI).
+- [Dash Enterprise CLI: Changelog](https://dash.plotly.com/dash-enterprise/cli/changelog.md): Version history for the Dash Enterprise CLI (de-client).
+- [Monitoring Dash Enterprise](https://dash.plotly.com/dash-enterprise/monitoring.md): Learn how to check system health and view overall resource usage as well as usage by app
+- [App Memory and CPU](https://dash.plotly.com/dash-enterprise/app-memory-and-cpu.md): Learn about default memory and CPU requests and limits for user-created resources (apps, workspaces, and managed database services), and how…
+- [Pod and Volume Limits](https://dash.plotly.com/dash-enterprise/pod-volume-limits.md)
+- [Backing Up and Restoring Dash Enterprise](https://dash.plotly.com/dash-enterprise/backups.md): How to back up and restore Dash Enterprise.
+- [Upgrading Dash Enterprise](https://dash.plotly.com/dash-enterprise/upgrade.md): Learn how to upgrade to a new version of Dash Enterprise
+- [Support](https://dash.plotly.com/dash-enterprise/support.md): Understand how and when you can receive support for Dash Enterprise.
+- [Troubleshooting Deployment Errors](https://dash.plotly.com/dash-enterprise/troubleshooting.md): Common errors when deploying apps and steps to resolve them.
+- [Deploying Apps with Git](https://dash.plotly.com/dash-enterprise/git.md): A reference for Git commands and how they are used with Dash Enterprise.
+- [Continuous Integration](https://dash.plotly.com/dash-enterprise/continuous-integration.md): Learn how to set up CI pipelines for Dash Enterprise.
+
+## Getting Help
+
+- [FAQs](https://dash.plotly.com/faqs.md): If you have read through the tutorial and still have questions or are encountering unexpected behaviour, this page may be useful.
+- [Project Maintenance](https://dash.plotly.com/project-maintenance.md): How different projects (libraries, docs, and other tools) in the Plotly Organization on GitHub are managed and maintained
+- [Dash R, Julia, Matlab, and F# docs have been retired](https://dash.plotly.com/non-python-dash-docs.md): Plotly has retired Dash documentation for R, Julia, Matlab, and F# to better focus our resources on the Python Dash ecosystem.
+- [Support and Contact](https://dash.plotly.com/support.md): Having trouble with Dash, Dash Enterprise, or Plotly Cloud?

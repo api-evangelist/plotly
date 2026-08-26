@@ -1,0 +1,28 @@
+generated: '2026-08-26'
+method: searched
+source: https://dash.plotly.com/ (llms.txt index of 489 documentation pages, searched 2026-08-26)
+limit_count: 0
+note: >-
+  Plotly publishes no rate limits for any of its API surfaces. Searched the full dash.plotly.com
+  llms.txt page index (489 pages), the Plotly Cloud CLI docs, the Dash Docs MCP docs and the
+  plotly/dds-api-docs GraphQL reference: no request quota, no burst allowance, no RateLimit-*/
+  X-RateLimit-*/Retry-After header documentation and no documented 429 behaviour appears anywhere.
+  The commercial metering Plotly does publish is seat-based and AI-credit-based (see
+  plans/plotly-plans-pricing.yml), not request-based. An honest zero, recorded rather than omitted.
+limits: []
+headers:
+  documented: false
+  observed: null
+  note: >-
+    Not observable: every Plotly API surface is authenticated. The Dash Docs MCP endpoint returns
+    401 before any rate-limit header is emitted, and the Dash Enterprise GraphQL API is
+    customer-hosted with no public instance to probe.
+exhaustion_status_code: null
+x-evidence:
+- url: https://dash.plotly.com/_mcp
+  http_status: 401
+  fetched: '2026-08-26'
+  note: 401 response carried no RateLimit-* or Retry-After header.
+- url: https://dash.plotly.com/llms.txt
+  http_status: 200
+  fetched: '2026-08-26'

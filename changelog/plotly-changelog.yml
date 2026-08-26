@@ -1,0 +1,97 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://github.com/plotly/dash/blob/dev/CHANGELOG.md, GitHub Releases for plotly/dash,
+  plotly/plotly.py and plotly/plotly.js, and https://plotly.com/whats-new/
+note: >-
+  Plotly maintains no single product changelog URL. Each open-source library keeps a Keep-a-
+  Changelog-style CHANGELOG.md plus tagged GitHub Releases; the commercial products are covered
+  by the marketing "What's New" page. Recorded here as three streams because that is how Plotly
+  actually publishes.
+scheme: semver
+semver_declared: >-
+  "This project adheres to Semantic Versioning" - stated at the top of the Dash CHANGELOG.
+streams:
+- name: Dash
+  changelog: https://github.com/plotly/dash/blob/dev/CHANGELOG.md
+  releases: https://github.com/plotly/dash/releases
+  package: dash (PyPI)
+  current_version: 4.4.1
+  current_date: '2026-07-21'
+  entries:
+  - version: 4.4.1
+    date: '2026-07-21'
+    breaking: false
+    highlights:
+    - Security fix - background callbacks trusted client-supplied job/cacheKey query parameters,
+      allowing an unauthenticated client to terminate an arbitrary process or read and delete
+      result-cache entries. Handles are now HMAC-signed and bound to a per-page-load token (#3902).
+    - Fixed callbacks registering twice under uvicorn import-string reload (#3883).
+    - Restored Flask-WTF CSRFProtect exemption via the dash.dash.dispatch view name (#3885).
+  - version: 4.4.0
+    date: '2026-07-03'
+    breaking: true
+    breaking_note: Dropped support for Python 3.8 (EOL October 2024); minimum is now Python 3.9.
+    highlights:
+    - WebSocket callback dispatch no longer limits concurrent users; new websocket_max_workers
+      argument to Dash (#3826).
+    - Added Plotly hoveranywhere/clickanywhere event support in dcc.Graph via xvals/yvals (#3852).
+  - version: 4.3.0
+    date: '2026-06-19'
+    breaking: false
+  - version: 4.2.0
+    date: '2026-06-01'
+    breaking: false
+  - version: unreleased
+    date: null
+    breaking: true
+    breaking_note: React 16 support removed - 16.14.0 is no longer an accepted REACT_VERSION.
+    highlights:
+    - Opt-in partial pattern matching for callback dependencies via partial_pattern=True (#3765).
+    - Experimental React 19 support behind REACT_VERSION=19.2.4; default remains React 18.3.1 (#3646).
+    - Optional gzip compression of server-side callback request payloads via compress_payload /
+      compress_threshold (#3925).
+- name: plotly.py
+  releases: https://github.com/plotly/plotly.py/releases
+  package: plotly (PyPI)
+  current_version: 7.0.0
+  current_date: '2026-08-25'
+  entries:
+  - version: 7.0.0
+    date: '2026-08-25'
+    breaking: true
+    breaking_note: Major version bump.
+  - version: 6.9.0
+    date: '2026-07-09'
+    breaking: false
+  - version: 6.8.0
+    date: '2026-06-03'
+    breaking: false
+- name: plotly.js
+  changelog: https://github.com/plotly/plotly.js/blob/master/CHANGELOG.md
+  releases: https://github.com/plotly/plotly.js/releases
+  package: plotly.js (npm)
+  current_version: 4.0.0
+  current_date: '2026-08-24'
+  entries:
+  - version: 4.0.0
+    date: '2026-08-24'
+    breaking: true
+    breaking_note: Major version bump.
+  - version: 3.7.0
+    date: '2026-07-03'
+    breaking: false
+  - version: 3.6.0
+    date: '2026-06-01'
+    breaking: false
+product_updates:
+  url: https://plotly.com/whats-new/
+  status: 200
+  note: Marketing-side product updates for Plotly Studio, Plotly Cloud and Dash Enterprise.
+x-evidence:
+- url: https://github.com/plotly/dash/blob/dev/CHANGELOG.md
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://plotly.com/whats-new/
+  http_status: 200
+  fetched: '2026-08-26'

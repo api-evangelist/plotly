@@ -1,0 +1,225 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  graphql/plotly-dash-enterprise-graphql.yml - transcribed from the selection sets and
+  Arguments/Returns tables published in https://github.com/plotly/dds-api-docs
+note: >-
+  Derived from a GraphQL contract, not an OpenAPI $ref graph. Entity names and field names are
+  exactly those Plotly publishes; relationships are read off the nested selection sets in the
+  reference documents. Scalar types are given only where Plotly states them (in the Arguments /
+  Returns tables); nested selection-set fields are listed by name without a type because their
+  types are not published, and inventing them would be fabrication. Identifiers in this API are
+  natural keys (app name, service name, username) - there are no opaque prefixed IDs.
+identifier_scheme:
+  style: natural-key
+  keys:
+  - entity: App
+    key: name
+  - entity: Service
+    key: name
+    qualifier: serviceType
+  - entity: User
+    key: username
+  - entity: PortalObject
+    key: portalname
+  note: No opaque or prefixed object IDs are exposed anywhere in the published surface.
+entities:
+- name: App
+  root: true
+  description: A deployed Dash application on a Dash Enterprise instance.
+  fields:
+  - name
+  - urlOnServer
+  - thumbnailUrl
+  - hasWorkspace
+  relationships:
+  - kind: belongs_to
+    target: User
+    via: owner
+  - kind: has_one
+    target: AppMetadata
+    via: metadata
+  - kind: has_one
+    target: AppStatus
+    via: status
+  - kind: has_one
+    target: AppAnalytics
+    via: analytics
+  - kind: has_one
+    target: AppLogs
+    via: logs
+  - kind: has_one
+    target: Collaborators
+    via: collaborators
+  - kind: has_many
+    target: Mount
+    via: mounts
+  - kind: has_many
+    target: Process
+    via: processes
+  - kind: has_many
+    target: EnvironmentVariable
+    via: environmentVariables
+  - kind: has_many
+    target: Service
+    via: linkedServices
+  - kind: has_many
+    target: Resource
+    via: resources
+- name: AppMetadata
+  description: Writable descriptive metadata on an app (AppMetaDataInput on updateApp).
+  fields:
+  - title
+  - description
+  - tags
+  - permissionLevel
+  - showInPortal
+  - sortRank
+  relationships:
+  - kind: has_one
+    target: Contact
+    via: contact
+- name: Contact
+  fields: [name, email]
+- name: AppStatus
+  fields: [running, deploying, canScale]
+- name: AppLogs
+  fields: [app, failed]
+- name: Collaborators
+  fields: [users, teams]
+  note: Written via addCollaborators / removeCollaborators, which take teams[String] and users[String].
+- name: AppAnalytics
+  relationships:
+  - kind: has_one
+    target: Timestamps
+    via: timestamps
+  - kind: has_one
+    target: GitRevision
+    via: gitRevision
+  - kind: has_one
+    target: ResourceUsage
+    via: resources
+  - kind: has_one
+    target: Dependencies
+    via: dependencies
+  fields: [appname]
+- name: Timestamps
+  fields: [created, updated, visited, error]
+- name: GitRevision
+  fields: [sha1, subject, error]
+- name: ResourceUsage
+  fields:
+  - cpuUsage
+  - containersRunning
+  - memoryUsage
+  - memoryCapacity
+  - imageSize
+  - diskCapacity
+  - containerSize
+  - error
+- name: Dependencies
+  fields: [python, error]
+- name: Mount
+  description: A host directory mounted into an app container.
+  fields: [hostDir, targetDir, status]
+- name: Process
+  description: A named process type and replica count for an app (ProcessInput on scaleProcesses).
+  fields: [type, number, status]
+- name: Resource
+  description: A CPU/GPU/memory request and limit pair (ResourceInput on setResources).
+  fields: [type, status]
+  relationships:
+  - kind: has_one
+    target: ResourceSpec
+    via: request
+  - kind: has_one
+    target: ResourceSpec
+    via: limit
+- name: ResourceSpec
+  fields: [cpu, gpu, memory]
+- name: EnvironmentVariable
+  description: An app-scoped or global environment variable.
+  fields: [name, value, status, readonly]
+  note: globalVar:Boolean on addEnvironmentVariable selects app scope vs instance scope.
+- name: Service
+  description: A backing data service linked to apps.
+  fields:
+  - name: name
+  - name: serviceType
+    type: ServiceType
+  - name: created
+    type: DateTime
+  - name: status
+  note: >-
+    ServiceType is an enum; plotly/dds-client exposes postgres subcommands, and Redis is the
+    other documented service type.
+  relationships:
+  - kind: has_many
+    target: App
+    via: linkService
+    note: Many-to-many, established by linkService / unlinkService.
+- name: User
+  fields: [username, isAdmin]
+  relationships:
+  - kind: has_many
+    target: App
+    via: owner
+- name: PortalObject
+  description: A branded app portal page.
+  fields: [portalname, requireLogin, metadata]
+  note: metadata is a JSONString; a logo is uploaded via uploadPortalLogo.
+- name: AdminTask
+  description: An administrative task listed by the adminTasks query.
+- name: Config
+  description: Instance-level configuration exposed by the config query.
+  fields:
+  - name: OAUTH_CLIENT_ID
+    type: String
+  - name: PLOTLY_AUTH_WEBAPP_URL
+    type: String
+  - name: AUTH_SAML_ENABLED
+    type: Boolean
+  - name: AUTH_LDAP_ENABLED
+    type: Boolean
+  - name: AUTH_PASSWORD
+    type: Boolean
+  - name: SSL_DASH_CERT_GENERATE
+    type: Boolean
+  - name: HA_ENABLED
+    type: Boolean
+  - name: DASH_APP_VIEWERS
+    type: Int
+- name: Workspace
+  description: >-
+    A development workspace attached to an app. Created from a template, restarted and deleted;
+    readiness polled via isWorkspaceReady.
+  relationships:
+  - kind: belongs_to
+    target: App
+    via: appname
+- name: SshKeys
+  fields: [keys]
+input_types:
+- name: AppMetaDataInput
+  used_by: updateApp
+- name: ProcessInput
+  used_by: scaleProcesses
+- name: ResourceInput
+  used_by: setResources
+- name: ServiceType
+  kind: enum
+  used_by: [addService, deleteService, linkService, unlinkService, services]
+- name: Upload
+  kind: scalar
+  required: true
+  used_by: [uploadAppThumbnail, uploadPortalLogo]
+- name: JSONString
+  kind: scalar
+  used_by: updatePortal
+- name: DateTime
+  kind: scalar
+  used_by: services
+coverage:
+  entities: 23
+  root_entity: App
+  source_operations: 37

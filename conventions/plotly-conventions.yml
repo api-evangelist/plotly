@@ -1,0 +1,183 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  graphql/plotly-dash-enterprise-graphql.yml (transcribed from
+  https://github.com/plotly/dds-api-docs), mcp/plotly-mcp.yml,
+  authentication/plotly-authentication.yml
+note: >-
+  Plotly publishes no API style guide. Every convention below is read off the published Dash
+  Enterprise GraphQL reference and the probed MCP/OAuth discovery documents. Where a convention
+  is absent it is recorded as absent rather than inferred.
+authentication:
+  styles:
+  - surface: Dash Docs MCP
+    style: "OAuth 2.1 bearer token in the Authorization header (bearer_methods_supported: header)"
+  - surface: Dash Enterprise GraphQL
+    style: HTTP Basic - username plus API key
+  - surface: Plotly Cloud CLI
+    style: API key via --api-key flag or PLOTLY_API_KEY environment variable
+  see: authentication/plotly-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    No idempotency key, request-id dedupe or retry-safety contract is documented for any Plotly
+    API surface. GraphQL mutations such as addApp/addService are not documented as safe to
+    replay; a repeat call is a second call. No Idempotency pointer is emitted for this provider.
+pagination:
+  style: page-number
+  applies_to:
+  - apps
+  - portals
+  request_params:
+  - name: page
+    type: Int
+    location: GraphQL argument
+  response_fields:
+  - name: nextPage
+    type: Int
+    note: Null or absent when there are no further pages.
+  page_size: not documented
+  cursors: false
+  note: >-
+    Only the apps and portals queries paginate. services, sshKeys, adminTasks and
+    globalEnvironmentVariables return whole collections with no page argument.
+filtering:
+  supported: true
+  params:
+  - name: name
+    applies_to: [apps, portals]
+    note: Fetch a single record by name.
+  - name: allApps
+    applies_to: [apps]
+    type: Boolean
+    note: Admin-scoped - return every app rather than only the caller's.
+field_selection:
+  style: graphql-selection-set
+  note: >-
+    Native GraphQL field selection is the sparse-fieldset mechanism; there is no expand= or
+    fields= parameter because there is no REST surface.
+metadata:
+  supported: true
+  note: >-
+    Apps carry a structured metadata object (title, description, tags, permissionLevel,
+    showInPortal, sortRank, contact{name,email}) written via the updateApp mutation with an
+    AppMetaDataInput. Portals accept free-form metadata as a JSONString.
+request_tracing:
+  request_id_header: null
+  note: No request-id or correlation-id header is documented on any surface.
+versioning:
+  style: none-in-transport
+  note: >-
+    See lifecycle/plotly-lifecycle.yml - neither /_mcp nor /Manager/graphql carries a version
+    segment or version header. Library versioning is semver.
+error_envelope:
+  style: field-level
+  shape:
+    ok: Boolean
+    error: String
+  variants:
+  - fields: [ok, error]
+    used_by: >-
+      deleteApp, deleteService, deleteUser, deleteWorkspace, purgeCache, restartWorkspace,
+      moveAppsAndServices, updateSshKeys
+  - fields: [ok, refresh, error]
+    used_by: >-
+      addEnvironmentVariable, removeEnvironmentVariable, linkService, unlinkService,
+      mountDirectory, unmountDirectory, scaleProcesses, setResources
+  - fields: [<payload>, error]
+    used_by: addApp, addService, addCollaborators, removeCollaborators, updateApp, updatePortal,
+      createWorkspace, uploadAppThumbnail, uploadPortalLogo
+  - fields: [ok, currentPasswordError, newPasswordError]
+    used_by: changePassword
+    note: The only operation with per-field error reporting.
+  rfc9457: false
+  status_codes: >-
+    GraphQL over HTTP - transport status is 200 for handled application errors; failures surface
+    in the payload error string. The MCP endpoint returns a bare JSON {"error": "..."} with a
+    real HTTP status (401 observed).
+  see: errors/plotly-error-codes.yml
+rate_limit_signaling:
+  documented: false
+  headers: []
+  see: rate-limits/plotly-rate-limits.yml
+dry_run_mode:
+  supported: false
+  note: >-
+    No preview, validate-only or dry-run flag on any mutation. The closest read-before-write
+    affordance is the apps(name:) / appsExists pattern used by dds-client's apps:exists command.
+reversibility:
+  grade: documented
+  grade_basis: >-
+    Reversal operations exist and are named, but Plotly documents no window for any of them -
+    no restore-after-delete period, no undo, no retention statement. Per the pipeline rubric a
+    reversal path without a stated window grades `documented`, not `verified`. No window is
+    asserted here because none is published.
+  surface: Dash Enterprise GraphQL API
+  docs: https://github.com/plotly/dds-api-docs
+  operations:
+  - write: addApp
+    reversal: deleteApp
+    window: null
+    window_source: null
+    note: Delete is permanent as documented; no restore or trash operation exists.
+  - write: deleteApp
+    reversal: null
+    window: null
+    irreversible: true
+    note: >-
+      No restoreApp mutation is published. Deleting an app is a one-way operation on the
+      documented surface.
+  - write: addService
+    reversal: deleteService
+    window: null
+    note: Applies to Postgres and Redis service types.
+  - write: deleteService
+    reversal: null
+    irreversible: true
+    note: No service restore operation is published.
+  - write: linkService
+    reversal: unlinkService
+    window: null
+  - write: mountDirectory
+    reversal: unmountDirectory
+    window: null
+  - write: addEnvironmentVariable
+    reversal: removeEnvironmentVariable
+    window: null
+  - write: addCollaborators
+    reversal: removeCollaborators
+    window: null
+  - write: createWorkspace
+    reversal: deleteWorkspace
+    window: null
+  - write: resetApiKey
+    reversal: null
+    irreversible: true
+    note: >-
+      Rotating the API key invalidates the previous key immediately and returns newKey once.
+      There is no documented way to recover the old key.
+  - write: deleteUser
+    reversal: null
+    irreversible: true
+    note: >-
+      moveAppsAndServices exists to transfer apps to another user before deletion, but it is a
+      precaution, not a reversal.
+  - write: purgeCache
+    reversal: null
+    irreversible: true
+    note: Cache purge is destructive but non-durable; the cache repopulates on next use.
+  read_only_surfaces:
+  - surface: Dash Docs MCP Server
+    reversibility: na
+    reason: >-
+      list_pages, search_pages and get_page_as_markdown are all read operations. reversibility,
+      dry_run_mode and idempotency are all na for this surface.
+cross_links:
+  errors: errors/plotly-error-codes.yml
+  lifecycle: lifecycle/plotly-lifecycle.yml
+  authentication: authentication/plotly-authentication.yml
+  rate_limits: rate-limits/plotly-rate-limits.yml
+  data_model: data-model/plotly-data-model.yml

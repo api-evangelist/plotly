@@ -1,0 +1,132 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  probed discovery documents on signin.cloud.plotly.com and dash.plotly.com,
+  https://plotly.com/security/, https://plotly.com/pricing/,
+  https://github.com/plotly/dds-api-docs
+note: >-
+  Plotly's conformance profile is agent-protocol and identity-protocol shaped, not
+  industry-vertical shaped. It sells into finance, healthcare/pharma, energy and retail but does
+  not claim a vertical data standard (no FHIR, no FDX, no PSD2) - it ships a visualization and
+  app framework that its customers point at their own data. domain_standard_conformance is
+  therefore recorded as not-applicable rather than false, and nothing is invented to fill it.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    https://signin.cloud.plotly.com/.well-known/oauth-authorization-server returns RFC 8414
+    authorization server metadata (HTTP 200, application/json, probed 2026-08-26).
+- id: oidc
+  conforms: true
+  evidence: >-
+    https://signin.cloud.plotly.com/.well-known/openid-configuration returns OpenID Connect
+    discovery metadata with userinfo_endpoint, jwks_uri and RS256 id_token signing (HTTP 200).
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: Served at the canonical /.well-known/oauth-authorization-server path.
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: true
+  evidence: >-
+    The Dash Docs MCP 401 carries
+    WWW-Authenticate: Bearer resource_metadata="https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp"
+    and that URL returns {"authorization_servers":["https://signin.cloud.plotly.com"],
+    "bearer_methods_supported":["header"],"resource":"https://dash.plotly.com/_mcp"}.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = ["S256"] in the authorization server metadata.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://signin.cloud.plotly.com/oauth2/register is advertised.
+- id: rfc8628-device-authorization-grant
+  conforms: true
+  evidence: >-
+    device_authorization_endpoint advertised and
+    urn:ietf:params:oauth:grant-type:device_code listed in grant_types_supported.
+- id: rfc7662-token-introspection
+  conforms: true
+  evidence: introspection_endpoint https://signin.cloud.plotly.com/oauth2/introspection advertised.
+- id: model-context-protocol
+  conforms: true
+  evidence: >-
+    Plotly operates a remote MCP server at https://dash.plotly.com/_mcp (HTTP transport,
+    JSON-RPC 2.0, OAuth-protected) and ships an MCP server implementation inside the Dash
+    framework itself (enable_mcp=True).
+- id: graphql
+  conforms: true
+  evidence: >-
+    Dash Enterprise exposes a GraphQL endpoint at /Manager/graphql; 10 queries and 27 mutations
+    are documented in plotly/dds-api-docs.
+- id: llms-txt
+  conforms: true
+  evidence: >-
+    https://plotly.com/llms.txt (HTTP 200, 4760 bytes) and https://dash.plotly.com/llms.txt
+    (HTTP 200, 70126 bytes, 489 indexed pages, each also readable as .md).
+- id: semver
+  conforms: true
+  evidence: >-
+    "This project adheres to Semantic Versioning" declared in the Dash CHANGELOG; all libraries
+    publish semver tags.
+- id: keep-a-changelog
+  conforms: true
+  evidence: >-
+    plotly/dash CHANGELOG.md uses Added/Removed/Fixed/Changed sections under versioned headings.
+- id: soc2
+  conforms: true
+  evidence: >-
+    "Our organization is also SOC 2 Type I and II compliant" - https://plotly.com/security/.
+    Also listed as an Enterprise plan feature on https://plotly.com/pricing/.
+- id: iso-27001
+  conforms: true
+  evidence: Listed on https://plotly.com/security/ and as an Enterprise tier feature on the pricing page.
+- id: iso-27701
+  conforms: true
+  evidence: Listed on https://plotly.com/security/ and as an Enterprise tier feature on the pricing page.
+- id: iso-42001
+  conforms: true
+  evidence: >-
+    AI management system certification, listed on https://plotly.com/security/ and as an
+    Enterprise tier feature on https://plotly.com/pricing/.
+- id: saml
+  conforms: true
+  evidence: >-
+    The Dash Enterprise GraphQL `config` query exposes AUTH_SAML_ENABLED, and SSO/OAuth is an
+    Enterprise plan feature.
+- id: ldap
+  conforms: true
+  evidence: The Dash Enterprise GraphQL `config` query exposes AUTH_LDAP_ENABLED.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns 404 on plotly.com and the SPA catch-all shell on
+    dash.plotly.com. No RFC 9116 file is served.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header support documented; no API deprecation policy published.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors are free-text strings in a GraphQL payload field; no application/problem+json anywhere.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger document found on any Plotly host after probing plotly.com,
+    dash.plotly.com, chart-studio.plotly.com and api.plot.ly, and after searching the
+    github.com/plotly organization (only two incidental "openapi" string matches, neither a spec).
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    No event or streaming contract. Dash ships WebSocket callbacks as a framework feature, but
+    Plotly operates no event surface and publishes no webhook catalogue.
+domain_standard_conformance:
+  applicable: false
+  reason: >-
+    Plotly is horizontal data-visualization tooling. Its verticals (finance, healthcare, energy,
+    retail) are the verticals of its CUSTOMERS' data, not of its API contract, and no vertical
+    message format, identifier scheme or schema URN appears anywhere in its published surface.
+    Reward-only check - recorded as not applicable rather than false.
+  probed_for:
+  - FHIR resource shapes
+  - SCIM schema URNs
+  - OData $metadata
+  - HL7v2 / X12 / ISO 20022 message types
+  - OAI-PMH / DataCite / ORCID identifier schemes

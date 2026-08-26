@@ -1,0 +1,87 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://plotly.com/chart-studio-updates/, https://github.com/plotly/dash/blob/dev/CHANGELOG.md,
+  https://plotly.com/whats-new/, probes of api.plot.ly and status.plotly.com on 2026-08-26
+versioning:
+  scheme: semver
+  declared_at: https://github.com/plotly/dash/blob/dev/CHANGELOG.md
+  current:
+    dash: 4.4.1
+    plotly.py: 7.0.0
+    plotly.js: 4.0.0
+    dash_enterprise_graphql: unversioned - no version path or header documented
+  api_versioning:
+    note: >-
+      Neither machine-readable API surface is versioned in the URL. The Dash Docs MCP endpoint is
+      a bare /_mcp path and the Dash Enterprise GraphQL API is a bare /Manager/graphql path;
+      neither documents a version header or a deprecation header.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Plotly publishes no API deprecation policy and no RFC 8594 Sunset/Deprecation header support.
+    It does announce product end-of-life on a dedicated page, which is what the Chart Studio
+    record below is built from.
+  events:
+  - product: Chart Studio Cloud
+    surface: Plotly REST API v2 (https://api.plot.ly/v2/)
+    status: retired
+    announced_at: https://plotly.com/chart-studio-updates/
+    sunset_date: '2025-10-31'
+    sunset_statement: Chart Studio closed on October 31, 2025 at 5pm EDT.
+    replacement:
+    - Plotly Studio
+    - Plotly Cloud
+    data_recovery: Contact support@plotly.com with subject "Chart Studio data request".
+    verification:
+      probe: https://api.plot.ly/v2/
+      result: no response - connection could not be established (curl exit, HTTP status 000)
+      probed: '2026-08-26'
+      note: >-
+        api.plot.ly still resolves in DNS (CNAME chart-studio.plot.ly, 35.190.21.88) but no longer
+        completes a connection. https://chart-studio.plotly.com/api/v2/ 302s to the
+        chart-studio-updates announcement page. The client library that wrapped it,
+        PyPI chart-studio, last shipped 2020-04-01.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA document found; SLAs are presumed part of the Enterprise contract.
+status_page:
+  url: null
+  probed:
+  - url: https://status.plotly.com/
+    status: '000'
+    note: no response
+  - url: https://plotly.com/status/
+    status: 404
+  - url: https://plotly.com/dash/status
+    status: 404
+  - url: https://status.cloud.plotly.com/
+    status: '000'
+    note: no response
+  - url: https://plotlyinc.statuspage.io/
+    status: 200
+    note: redirects to atlassian.com/software/statuspage - the tenant no longer exists
+  verdict: >-
+    No status page. Every candidate host either fails to answer or 404s, so no StatusPage pointer
+    is emitted.
+support_windows:
+  python:
+    note: Dash 4.4.0 dropped Python 3.8 (EOL October 2024); minimum supported is Python 3.9.
+  react:
+    note: >-
+      Dash removed React 16 support in the unreleased line; default is React 18.3.1 with
+      experimental React 19 behind an environment variable.
+deprecated_operations: []
+x-evidence:
+- url: https://plotly.com/chart-studio-updates/
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://api.plot.ly/v2/
+  http_status: '000'
+  fetched: '2026-08-26'
+- url: https://status.plotly.com/
+  http_status: '000'
+  fetched: '2026-08-26'

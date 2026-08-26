@@ -1,0 +1,211 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, crandb.r-pkg.org, api.nuget.org, crates.io, rubygems.org and
+  data.jsdelivr.com queried unauthenticated on 2026-08-26; first-party status confirmed against
+  the github.com/plotly organization.
+note: >-
+  Plotly's distribution model is unusual for this catalog: the packages ARE the product. The
+  graphing libraries and the Dash framework are the primary surface, not client SDKs wrapping a
+  remote API. Two of the entries below are explicitly decayed and recorded as such: chart-studio
+  (last release 2020-04-01) wraps the Chart Studio Cloud REST API that Plotly retired on
+  2025-10-31, and the npm `plotly` package (last release 2015-12-30) is a third-party Node.js
+  wrapper for that same retired service.
+packages:
+- language: python
+  registry: pypi
+  name: plotly
+  url: https://pypi.org/project/plotly/
+  install: pip install plotly
+  official: true
+  version: 7.0.0
+  published: '2026-08-25'
+  repository: https://github.com/plotly/plotly.py
+- language: python
+  registry: pypi
+  name: dash
+  url: https://pypi.org/project/dash/
+  install: pip install dash
+  official: true
+  version: 4.4.1
+  published: '2026-07-21'
+  repository: https://github.com/plotly/dash
+  note: The Plotly Cloud CLI ships as the `dash[cloud]` extra.
+- language: javascript
+  registry: npm
+  name: plotly.js
+  url: https://www.npmjs.com/package/plotly.js
+  install: npm install plotly.js
+  official: true
+  version: 4.0.0
+  published: '2026-08-24'
+  repository: https://github.com/plotly/plotly.js
+- language: javascript
+  registry: npm
+  name: plotly.js-dist-min
+  url: https://www.npmjs.com/package/plotly.js-dist-min
+  install: npm install plotly.js-dist-min
+  official: true
+  version: 4.0.0
+  published: '2026-08-24'
+- language: javascript
+  registry: cdn
+  name: plotly.js (jsDelivr / unpkg bundle)
+  url: https://cdn.jsdelivr.net/npm/plotly.js-dist-min/plotly.min.js
+  official: true
+  version: null
+  published: null
+  note: >-
+    Checked data.jsdelivr.com/v1/packages/npm/plotly.js on 2026-08-26 - it reports
+    latest 4.0.0, rc 4.0.0-rc.0 and a maintenance channel still on 1.16.5. The script-tag URL
+    Plotly's docs show is unpinned and floats to latest, so a consumer cannot tell which major
+    version they are loading; version/published are therefore null by observation, not by omission.
+- language: javascript
+  registry: npm
+  name: react-plotly.js
+  url: https://www.npmjs.com/package/react-plotly.js
+  install: npm install react-plotly.js
+  official: true
+  version: 4.1.0
+  published: '2026-07-29'
+  repository: https://github.com/plotly/react-plotly.js
+- language: typescript
+  registry: npm
+  name: angular-plotly.js
+  url: https://www.npmjs.com/package/angular-plotly.js
+  install: npm install angular-plotly.js
+  official: true
+  version: 22.0.1
+  published: '2026-08-20'
+  repository: https://github.com/plotly/angular-plotly.js
+- language: r
+  registry: cran
+  name: plotly
+  url: https://cran.r-project.org/package=plotly
+  install: install.packages("plotly")
+  official: true
+  version: 4.12.1
+  published: '2026-07-22'
+  repository: https://github.com/plotly/plotly.R
+- language: rust
+  registry: crates.io
+  name: plotly
+  url: https://crates.io/crates/plotly
+  install: cargo add plotly
+  official: true
+  version: 0.14.1
+  published: '2026-02-15'
+  repository: https://github.com/plotly/plotly.rs
+- language: dotnet
+  registry: nuget
+  name: Plotly.NET
+  url: https://www.nuget.org/packages/Plotly.NET
+  install: dotnet add package Plotly.NET
+  official: true
+  version: 5.1.0
+  published: '2024-09-04'
+  repository: https://github.com/plotly/Plotly.NET
+- language: python
+  registry: pypi
+  name: kaleido
+  url: https://pypi.org/project/kaleido/
+  install: pip install kaleido
+  official: true
+  version: 1.3.0
+  published: '2026-05-04'
+  repository: https://github.com/plotly/Kaleido
+  note: Static image export engine used by plotly.py.
+- language: python
+  registry: pypi
+  name: dash-ag-grid
+  url: https://pypi.org/project/dash-ag-grid/
+  install: pip install dash-ag-grid
+  official: true
+  version: 35.3.0
+  published: '2026-07-15'
+  repository: https://github.com/plotly/dash-ag-grid
+- language: python
+  registry: pypi
+  name: dash-cytoscape
+  url: https://pypi.org/project/dash-cytoscape/
+  install: pip install dash-cytoscape
+  official: true
+  version: 1.0.2
+  published: '2024-07-15'
+  repository: https://github.com/plotly/dash-cytoscape
+- language: python
+  registry: pypi
+  name: dash-bio
+  url: https://pypi.org/project/dash-bio/
+  install: pip install dash-bio
+  official: true
+  version: 1.0.2
+  published: '2022-03-19'
+  repository: https://github.com/plotly/dash-bio
+  note: Bioinformatics component suite; no release in over four years.
+- language: python
+  registry: pypi
+  name: dash-auth
+  url: https://pypi.org/project/dash-auth/
+  install: pip install dash-auth
+  official: true
+  version: 2.3.0
+  published: '2024-03-19'
+  repository: https://github.com/plotly/dash-auth
+- language: python
+  registry: pypi
+  name: dash-enterprise-auth
+  url: https://pypi.org/project/dash-enterprise-auth/
+  install: pip install dash-enterprise-auth
+  official: true
+  version: 0.2.6
+  published: '2026-05-21'
+  repository: https://github.com/plotly/dash-enterprise-auth
+- language: python
+  registry: pypi
+  name: chart-studio
+  url: https://pypi.org/project/chart-studio/
+  install: pip install chart-studio
+  official: true
+  version: 1.1.0
+  published: '2020-04-01'
+  repository: https://github.com/plotly/chart-studio
+  status: abandoned
+  note: >-
+    Client for the Chart Studio Cloud REST API v2. Chart Studio closed on 2025-10-31 and
+    api.plot.ly no longer answers, so this package wraps a service that no longer exists. Last
+    release predates the shutdown by five years.
+- language: javascript
+  registry: npm
+  name: plotly
+  url: https://www.npmjs.com/package/plotly
+  official: false
+  version: 1.0.6
+  published: '2015-12-30'
+  status: abandoned
+  note: >-
+    Node.js wrapper for the retired Chart Studio Streaming and REST APIs. The npm metadata points
+    at github.com/alexander-daniel/plotly-nodejs, so it is recorded as third-party, not
+    first-party. Retained here only so the name is not mistaken for an official Plotly SDK.
+- language: ruby
+  registry: rubygems
+  name: plotly
+  url: https://rubygems.org/gems/plotly
+  official: false
+  version: 0.0.1
+  published: '2013-09-08'
+  status: abandoned
+  note: Authored by Louis Mullie, not by Plotly. Recorded as a negative finding.
+summary:
+  official_count: 16
+  third_party_count: 2
+  abandoned_count: 3
+  languages:
+  - python
+  - javascript
+  - typescript
+  - r
+  - rust
+  - dotnet
+  - julia
+  - matlab

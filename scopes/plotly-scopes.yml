@@ -1,0 +1,41 @@
+generated: '2026-08-26'
+method: probed
+source: https://signin.cloud.plotly.com/.well-known/openid-configuration
+docs: https://dash.plotly.com/plotly-cloud/sign-in
+note: >-
+  Read directly from the Plotly Cloud authorization server's own discovery documents (RFC 8414
+  and OpenID Connect Discovery), both fetched 2026-08-26. Plotly publishes no scopes reference
+  page and declares no product- or resource-specific scopes: the advertised set is the standard
+  OIDC quartet only. That is the finding - the Dash Docs MCP server is protected by
+  authentication rather than by scoped authorization.
+schemes:
+- name: PlotlyCloudOAuth
+  source: https://signin.cloud.plotly.com/.well-known/oauth-authorization-server
+  issuer: https://signin.cloud.plotly.com
+  flows:
+  - authorization_code
+  - refresh_token
+  - device_code
+  - client_credentials
+scopes:
+- name: openid
+  description: OpenID Connect - request an ID token identifying the end user.
+  standard: true
+- name: profile
+  description: Access the end user's default profile claims.
+  standard: true
+- name: email
+  description: Access the end user's email address claim.
+  standard: true
+- name: offline_access
+  description: Issue a refresh token so the client can act without the user present.
+  standard: true
+scope_count: 4
+product_specific_scopes: 0
+x-evidence:
+- url: https://signin.cloud.plotly.com/.well-known/openid-configuration
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://signin.cloud.plotly.com/.well-known/oauth-authorization-server
+  http_status: 200
+  fetched: '2026-08-26'

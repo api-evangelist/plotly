@@ -1,0 +1,63 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  graphql/plotly-dash-enterprise-graphql.yml (transcribed from
+  https://github.com/plotly/dds-api-docs) plus the observed 401 body from
+  https://dash.plotly.com/_mcp
+format: field-level-string
+rfc9457: false
+note: >-
+  Plotly publishes no error-code registry, no problem-type catalogue and no numeric error
+  namespace for any API surface. What it does publish is the SHAPE of the error, and that is what
+  is recorded here. Dash Enterprise GraphQL mutations return a nullable `error` string alongside
+  the payload rather than an error code, so an agent can detect failure but cannot branch on a
+  stable identifier. No error strings are invented below: only the envelope fields Plotly
+  documents are listed.
+envelopes:
+- surface: Dash Enterprise GraphQL API
+  transport: GraphQL over HTTP
+  transport_status: >-
+    200 for handled application errors - the failure is carried in the payload, not the status
+    line. GraphQL-level errors (malformed query, auth failure) surface in the standard top-level
+    errors[] array.
+  fields:
+  - name: error
+    type: String
+    nullable: true
+    meaning: Human-readable failure message; null or absent on success.
+  - name: ok
+    type: Boolean
+    meaning: Success flag on operations that return no payload object.
+  - name: refresh
+    type: Boolean
+    meaning: >-
+      Signals that the caller should refresh the app or service state after the mutation - a
+      side-channel status, not an error field.
+  - name: currentPasswordError
+    type: String
+    operation: changePassword
+    meaning: Per-field validation failure on the supplied current password.
+  - name: newPasswordError
+    type: String
+    operation: changePassword
+    meaning: Per-field validation failure on the proposed new password.
+  coded_errors: false
+  remediation_documented: false
+- surface: Dash Docs MCP Server
+  transport: HTTP JSON-RPC
+  observed:
+  - http_status: 401
+    body: '{"error":"Authentication required."}'
+    headers:
+      WWW-Authenticate: Bearer resource_metadata="https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp"
+    remediation: >-
+      Obtain a Plotly Cloud bearer token from https://signin.cloud.plotly.com per the RFC 9728
+      protected-resource metadata, then retry with an Authorization header.
+    probed: '2026-08-26'
+  coded_errors: false
+gaps:
+  - No stable error codes on any surface - callers must match on free-text strings.
+  - No documented HTTP status taxonomy for the GraphQL endpoint.
+  - No RFC 9457 application/problem+json anywhere.
+  - No published error reference page.
+problems: []

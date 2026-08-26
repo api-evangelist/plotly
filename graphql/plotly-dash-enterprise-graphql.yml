@@ -1,0 +1,494 @@
+generated: '2026-08-26'
+method: searched
+source: https://github.com/plotly/dds-api-docs
+note: 'Plotly publishes the Dash Enterprise (DDS) GraphQL API reference and runnable Python examples in
+  its own plotly/dds-api-docs repository, and a Go client in plotly/dds-client. Every operation, argument
+  and return field below is transcribed verbatim from those published reference.md files. NO SDL IS RECORDED:
+  Dash Enterprise is customer-hosted, so there is no public endpoint to run introspection against and
+  the scalar types of nested selection-set fields are not published. Reconstructing an SDL would require
+  inventing them.'
+endpoint:
+  url: https://{dash-enterprise-host}/Manager/graphql
+  templated: true
+  templated_reason: Dash Enterprise is deployed on the customer's own infrastructure; the host is supplied
+    via DASH_ENTERPRISE_URL / DDS_DOMAIN_NAME. plotly/dds-client builds the client against DashEnterpriseURL
+    + "/Manager/graphql".
+  introspection: not-probed - no public host exists
+authentication:
+  scheme: http-basic
+  username: Dash Enterprise username (DASH_ENTERPRISE_USERNAME / DDS_USERNAME)
+  password: Dash Enterprise API key (DASH_ENTERPRISE_API_KEY / DDS_API_KEY)
+  key_source: Retrieved from the Dash Enterprise Management UI; rotatable via the resetApiKey mutation.
+clients:
+- name: dds-client
+  language: go
+  url: https://github.com/plotly/dds-client
+  official: true
+- name: dds-api-docs Python examples
+  language: python
+  url: https://github.com/plotly/dds-api-docs
+  official: true
+coverage:
+  queries: 10
+  mutations: 27
+  total_operations: 37
+queries:
+- name: adminTasks
+  arguments: []
+  returns:
+  - name: tasks
+    type: '[AdminTask]'
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/adminTasks/reference.md
+- name: apps
+  arguments:
+  - name: page
+    type: Int
+  - name: name
+    type: String
+  - name: allApps
+    type: Boolean
+  returns:
+  - name: apps
+    type: '[App]'
+  - name: nextPage
+    type: Int
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/apps/reference.md
+- name: appsCount
+  arguments: []
+  returns:
+  - name: username
+    type: String
+  - name: count
+    type: Int
+  - name: user
+    type: User
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/appsCount/reference.md
+- name: config
+  arguments: []
+  returns:
+  - name: OAUTH_CLIENT_ID
+    type: String
+  - name: PLOTLY_AUTH_WEBAPP_URL
+    type: String
+  - name: AUTH_SAML_ENABLED
+    type: Boolean
+  - name: AUTH_LDAP_ENABLED
+    type: Boolean
+  - name: SSL_DASH_CERT_GENERATE
+    type: Boolean
+  - name: AUTH_PASSWORD
+    type: Boolean
+  - name: HA_ENABLED
+    type: Boolean
+  - name: DASH_APP_VIEWERS
+    type: Int
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/config/reference.md
+- name: current
+  arguments: []
+  returns:
+  - name: username
+    type: String
+  - name: isAdmin
+    type: Boolean
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/current/reference.md
+- name: globalEnvironmentVariables
+  arguments: []
+  returns:
+  - name: name
+    type: String
+  - name: value
+    type: String
+  - name: status
+    type: String
+  - name: readonly
+    type: Boolean
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/globalEnvironmentVariables/reference.md
+- name: isWorkspaceReady
+  arguments:
+  - name: appname
+    type: String
+  returns: []
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/isWorkspaceReady/reference.md
+- name: portals
+  arguments:
+  - name: page
+    type: Int
+  - name: page
+    type: Int
+  - name: name
+    type: String
+  returns:
+  - name: portals
+    type: '[PortalObject]'
+  - name: nextPage
+    type: Int
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/portals/reference.md
+- name: services
+  arguments: []
+  returns:
+  - name: name
+    type: String
+  - name: serviceType
+    type: ServiceType
+  - name: created
+    type: DateTime
+  - name: status
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/services/reference.md
+- name: sshKeys
+  arguments: []
+  returns:
+  - name: keys
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/queries/sshKeys/reference.md
+mutations:
+- name: addApp
+  arguments:
+  - name: name
+    type: String
+  returns:
+  - name: app
+    type: App
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/addApp/reference.md
+- name: addCollaborators
+  arguments:
+  - name: appname
+    type: String
+  - name: teams
+    type: '[String]'
+  - name: users
+    type: '[String]'
+  returns:
+  - name: app
+    type: App
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/addCollaborators/reference.md
+- name: addEnvironmentVariable
+  arguments:
+  - name: appname
+    type: String
+  - name: globalVar
+    type: Boolean
+  - name: name
+    type: String
+  - name: value
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/addEnvironmentVariable/reference.md
+- name: addService
+  arguments:
+  - name: name
+    type: String
+  - name: serviceType
+    type: ServiceType
+  returns:
+  - name: service
+    type: Service
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/addService/reference.md
+- name: changePassword
+  arguments:
+  - name: currentPassword
+    type: String
+  - name: newPassword
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: currentPasswordError
+    type: String
+  - name: newPasswordError
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/changePassword/reference.md
+- name: createWorkspace
+  arguments:
+  - name: appname
+    type: String
+  - name: template
+    type: String
+  returns:
+  - name: app
+    type: App
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/createWorkspace/reference.md
+- name: deleteApp
+  arguments:
+  - name: name
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/deleteApp/reference.md
+- name: deleteService
+  arguments:
+  - name: name
+    type: String
+  - name: serviceType
+    type: ServiceType
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/deleteService/reference.md
+- name: deleteUser
+  arguments:
+  - name: username
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/deleteUser/reference.md
+- name: deleteWorkspace
+  arguments:
+  - name: appname
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/deleteWorkspace/reference.md
+- name: linkService
+  arguments:
+  - name: appname
+    type: String
+  - name: serviceName
+    type: String
+  - name: serviceType
+    type: ServiceType
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/linkService/reference.md
+- name: mountDirectory
+  arguments:
+  - name: appname
+    type: String
+  - name: hostDir
+    type: String
+  - name: targetDir
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/mountDirectory/reference.md
+- name: moveAppsAndServices
+  arguments:
+  - name: sourceUsername
+    type: String
+  - name: targetUsername
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/moveAppsAndServices/reference.md
+- name: purgeCache
+  arguments:
+  - name: appname
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/purgeCache/reference.md
+- name: removeCollaborators
+  arguments:
+  - name: appname
+    type: String
+  - name: teams
+    type: '[String]'
+  - name: users
+    type: '[String]'
+  returns:
+  - name: app
+    type: App
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/removeCollaborators/reference.md
+- name: removeEnvironmentVariable
+  arguments:
+  - name: appname
+    type: String
+  - name: globalVar
+    type: Boolean
+  - name: name
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/removeEnvironmentVariable/reference.md
+- name: resetApiKey
+  arguments:
+  - name: password
+    type: String
+  returns:
+  - name: newKey
+    type: String
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/resetApiKey/reference.md
+- name: restartWorkspace
+  arguments:
+  - name: appname
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/restartWorkspace/reference.md
+- name: scaleProcesses
+  arguments:
+  - name: appname
+    type: String
+  - name: processes
+    type: '[ProcessInput]'
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/scaleProcesses/reference.md
+- name: setResources
+  arguments:
+  - name: appname
+    type: String
+  - name: resources
+    type: '[ResourceInput]'
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/setResources/reference.md
+- name: unlinkService
+  arguments:
+  - name: appname
+    type: String
+  - name: serviceName
+    type: String
+  - name: serviceType
+    type: ServiceType
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/unlinkService/reference.md
+- name: unmountDirectory
+  arguments:
+  - name: appname
+    type: String
+  - name: hostDir
+    type: String
+  - name: targetDir
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: refresh
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/unmountDirectory/reference.md
+- name: updateApp
+  arguments:
+  - name: appname
+    type: String
+  - name: metadata
+    type: AppMetaDataInput
+  returns:
+  - name: app
+    type: App
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/updateApp/reference.md
+- name: updatePortal
+  arguments:
+  - name: page
+    type: Int
+  - name: metadata
+    type: JSONString
+  - name: portalname
+    type: String
+  - name: requireLogin
+    type: Boolean
+  returns:
+  - name: portal
+    type: PortalObject
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/updatePortal/reference.md
+- name: updateSshKeys
+  arguments:
+  - name: keys
+    type: String
+  returns:
+  - name: ok
+    type: Boolean
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/updateSshKeys/reference.md
+- name: uploadAppThumbnail
+  arguments:
+  - name: appname
+    type: String
+  - name: thumbnail
+    type: Upload!
+  returns:
+  - name: app
+    type: App
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/uploadAppThumbnail/reference.md
+- name: uploadPortalLogo
+  arguments:
+  - name: page
+    type: Int
+  - name: logo
+    type: Upload!
+  - name: portalname
+    type: String
+  returns:
+  - name: portal
+    type: PortalObject
+  - name: error
+    type: String
+  reference: https://github.com/plotly/dds-api-docs/blob/master/mutations/uploadPortalLogo/reference.md

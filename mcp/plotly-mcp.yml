@@ -1,0 +1,76 @@
+generated: '2026-08-26'
+method: searched
+status: published
+source: https://dash.plotly.com/mcp
+deployment:
+  mode: remote
+  endpoint: https://dash.plotly.com/_mcp
+  auth: oauth
+  verified: probed
+  note: >-
+    POST tools/list against https://dash.plotly.com/_mcp on 2026-08-26 returned HTTP 401
+    {"error":"Authentication required."} with
+    WWW-Authenticate: Bearer resource_metadata="https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp"
+    - an RFC 9728 challenge. The endpoint is real and remotely reachable; the tool list below is
+    the one Plotly publishes in its own documentation, because live introspection is auth-gated.
+server:
+  name: plotly-dash-documentation
+  transport: http
+  url: https://dash.plotly.com/_mcp
+  docs: https://dash.plotly.com/mcp
+  announcement: https://plotly.com/blog/dash-docs-mcp/
+authentication:
+  type: oauth2
+  flow: authorization_code
+  identity_provider: https://signin.cloud.plotly.com
+  protected_resource_metadata: https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp
+  account: Plotly Cloud account (browser sign-in on first use)
+  note: >-
+    Plotly's docs state the Dash Docs MCP server uses Plotly Cloud for authentication and is NOT
+    supported for Dash Enterprise login. Enterprise-library docs (Design Kit, Snapshot Engine,
+    Embedded) are gated to a Cloud for Enterprise subscription.
+install:
+  claude_code: claude mcp add plotly-dash-documentation --transport http --scope user https://dash.plotly.com/_mcp
+  codex_cli: codex mcp add plotly-dash-documentation --url https://dash.plotly.com/_mcp
+  client_config: |
+    {
+      "mcpServers": {
+        "plotly-dash-documentation": {
+          "type": "http",
+          "url": "https://dash.plotly.com/_mcp"
+        }
+      }
+    }
+tools:
+- name: list_pages
+  description: List all available Dash documentation pages, each with its url, name, and description.
+  input_schema: auth-gated - requires authenticated tools/list introspection
+- name: search_pages
+  description: Search documentation pages by keyword across page names, descriptions, and component prop keywords.
+  input_schema: auth-gated - requires authenticated tools/list introspection
+- name: get_page_as_markdown
+  description: Retrieve the full rendered content of a documentation page by its URL path.
+  input_schema: auth-gated - requires authenticated tools/list introspection
+related_capability:
+  name: Dash MCP
+  description: >-
+    Distinct from the hosted Dash Docs MCP server: the Dash framework itself can turn any Dash
+    application into an MCP server. Passing enable_mcp=True to the Dash constructor starts an MCP
+    server alongside the app, exposing callbacks and datasets as tools; the mcp_enabled decorator
+    exposes plain Python functions as tools. This is a product capability shipped to Plotly's
+    customers, not a Plotly-operated agent surface, and is therefore not counted as a Plotly MCP
+    server deployment.
+  docs: https://dash.plotly.com/dash-mcp
+  reference: https://dash.plotly.com/dash-mcp/reference
+  auth_docs: https://dash.plotly.com/dash-mcp/auth
+x-evidence:
+- url: https://dash.plotly.com/_mcp
+  method: POST tools/list
+  http_status: 401
+  fetched: '2026-08-26'
+- url: https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://dash.plotly.com/mcp
+  http_status: 200
+  fetched: '2026-08-26'

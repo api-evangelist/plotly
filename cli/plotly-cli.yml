@@ -1,0 +1,94 @@
+generated: '2026-08-26'
+method: searched
+source: https://dash.plotly.com/plotly-cloud/cli
+clis:
+- name: plotly
+  product: Plotly Cloud
+  docs: https://dash.plotly.com/plotly-cloud/cli
+  install:
+  - method: pip
+    command: pip install "dash[cloud]"
+  verify: plotly --help
+  authentication:
+    interactive: plotly user login
+    non_interactive:
+    - flag: --api-key "<key>"
+    - env: PLOTLY_API_KEY
+  config_file: plotly-cloud.toml
+  commands:
+  - group: user
+    commands:
+    - name: plotly user login
+      summary: Browser-based sign-in that stores credentials locally.
+    - name: plotly user whoami
+      summary: Show the signed-in account.
+    - name: plotly user logout
+      summary: Clear stored credentials.
+    - name: plotly user teams
+      summary: List the teams the account belongs to.
+  - group: app
+    commands:
+    - name: plotly app publish
+      summary: Publish a Dash or Plotly Studio app to Plotly Cloud.
+      flags:
+      - --name
+      - --config
+      - --team
+    - name: plotly app status
+      summary: Report the status of a published app.
+- name: dds-client
+  product: Dash Enterprise
+  docs: https://github.com/plotly/dds-client
+  source: https://github.com/plotly/dds-client
+  language: go
+  install:
+  - method: build-from-source
+    command: go build -o dds-client
+  authentication:
+    env:
+    - DASH_ENTERPRISE_URL
+    - DASH_ENTERPRISE_USERNAME
+    - DASH_ENTERPRISE_API_KEY
+  backing_api: https://{dash-enterprise-host}/Manager/graphql
+  commands:
+  - name: apps:list
+    summary: List all apps.
+  - name: apps:exists
+    summary: Check whether an app exists.
+    flags: [--name]
+  - name: apps:create
+    summary: Create an app.
+    flags: [--name]
+  - name: apps:delete
+    summary: Delete an app.
+    flags: [--name]
+  - name: postgres:list
+    summary: List all Postgres services.
+  - name: postgres:exists
+    summary: Check whether a Postgres service exists.
+- name: Dash Enterprise CLI
+  product: Dash Enterprise
+  docs: https://dash.plotly.com/dash-enterprise/cli
+  summary: >-
+    Command line interface for Dash Enterprise app management - deploy, list, initialize and
+    update apps.
+  authentication:
+    protocol: OAuth 2.0 / OpenID Connect
+    authorization_server: Keycloak
+    tokens: >-
+      The CLI requests access and offline tokens from Keycloak. Access tokens are valid for 24
+      hours by default and refreshed for 30 days.
+    login_methods:
+    - browser-based flow
+    - username and password (recommended for CI/CD)
+  backing_api: Dash Enterprise Platform API
+x-evidence:
+- url: https://dash.plotly.com/plotly-cloud/cli
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://dash.plotly.com/dash-enterprise/cli
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://github.com/plotly/dds-client
+  http_status: 200
+  fetched: '2026-08-26'

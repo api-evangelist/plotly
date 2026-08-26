@@ -1,0 +1,88 @@
+generated: '2026-08-26'
+method: searched
+source: probed each Plotly host directly on 2026-08-26
+note: >-
+  Plotly serves a real RFC 9728 OAuth protected-resource document for its Dash Docs MCP server,
+  and its Plotly Cloud sign-in host (signin.cloud.plotly.com) serves both RFC 8414 authorization
+  server metadata and OpenID Connect discovery. Two important caveats are recorded below.
+  (1) dash.plotly.com is a single-page-app catch-all: every /.well-known/* path returns HTTP 200
+  with the same 142,024-byte HTML documentation shell, so a bare 200 there is NOT a document.
+  Only /.well-known/oauth-protected-resource/_mcp returns application/json and is recorded as a
+  hit. (2) plotly.com returns a genuine 404 (195,028-byte HTML error page) for every
+  /.well-known/* path probed.
+hosts:
+- host: https://dash.plotly.com
+  documents:
+  - path: /.well-known/oauth-protected-resource/_mcp
+    status: 200
+    content_type: application/json
+    file: plotly-oauth-protected-resource.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    note: SPA catch-all shell (142024 bytes) - not a document
+  soft_404_control:
+    probe: /.well-known/agent-card.json
+    status: 200
+    bytes: 142024
+    content_type: text/html
+    verdict: catch-all - identical body served for every /.well-known/* path
+  hit_count: 1
+- host: https://signin.cloud.plotly.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: plotly-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: plotly-oauth-authorization-server.json
+  hit_count: 2
+- host: https://plotly.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  hit_count: 0
+summary:
+  hosts_probed: 3
+  documents_served: 3
+  security_txt: false
+  api_catalog: false
+  agent_card: false

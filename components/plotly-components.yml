@@ -1,0 +1,94 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://dash.plotly.com/llms.txt (489-page documentation index),
+  https://plotly.com/dash/design-kit/, https://plotly.com/dash/embedding/,
+  and the github.com/plotly organization
+note: >-
+  Distinct from packages/plotly-packages.yml, which records distribution. This file records the
+  client-side and embeddable UI surface: Dash component libraries a developer composes into an
+  app, the charting loaders, and the hosted/embedded surfaces Plotly sells. For Plotly this is
+  the largest artifact in the repo because components ARE the product.
+families:
+- family: Core Dash components
+  description: The component libraries bundled with the Dash framework.
+  docs: https://dash.plotly.com/dash-core-components
+  components:
+  - name: Dash Core Components (dcc)
+    docs: https://dash.plotly.com/dash-core-components
+    summary: Essential interactive UI elements - Graph, Dropdown, Slider, Upload, Store, Interval, DatePicker, Tabs.
+  - name: Dash HTML Components (html)
+    docs: https://dash.plotly.com/dash-html-components
+    summary: HTML tags exposed as Python classes.
+  - name: Dash DataTable
+    docs: https://dash.plotly.com/datatable
+    summary: Interactive editable table component.
+- family: Charting loaders
+  description: The chart rendering engines a component or page loads.
+  components:
+  - name: plotly.js
+    package: plotly.js (npm)
+    cdn: https://cdn.jsdelivr.net/npm/plotly.js-dist-min/plotly.min.js
+    summary: The open-source JavaScript charting library behind Plotly and Dash.
+  - name: react-plotly.js
+    package: react-plotly.js (npm)
+    repository: https://github.com/plotly/react-plotly.js
+    summary: React wrapper component for plotly.js.
+  - name: angular-plotly.js
+    package: angular-plotly.js (npm)
+    repository: https://github.com/plotly/angular-plotly.js
+    summary: Angular wrapper component for plotly.js.
+- family: Specialist Dash component libraries
+  description: First-party component suites maintained in the plotly GitHub organization.
+  components:
+  - name: Dash AG Grid
+    package: dash-ag-grid (PyPI)
+    repository: https://github.com/plotly/dash-ag-grid
+    summary: High-performance customizable data grid wrapping AG Grid.
+  - name: Dash Cytoscape
+    package: dash-cytoscape (PyPI)
+    repository: https://github.com/plotly/dash-cytoscape
+    summary: Interactive network visualization powered by Cytoscape.js.
+  - name: Dash Bio
+    package: dash-bio (PyPI)
+    repository: https://github.com/plotly/dash-bio
+    summary: Bioinformatics components (sequence, molecule, genomic viewers).
+  - name: Dash DAQ
+    repository: https://github.com/plotly/dash-daq
+    summary: Control and gauge components for industrial/instrumentation dashboards.
+  - name: Dash VTK
+    repository: https://github.com/plotly/dash-vtk
+    summary: 3D scientific visualization bringing vtk.js into Dash.
+  - name: Dash Deck
+    repository: https://github.com/plotly/dash-deck
+    summary: Geospatial visualization bringing deck.gl and pydeck into Dash.
+  - name: Dash Pivottable
+    repository: https://github.com/plotly/dash-pivottable
+    summary: Drag-and-drop pivot table with plotly.js charts.
+  - name: Dash Slicer
+    repository: https://github.com/plotly/dash-slicer
+    summary: Volume slicer component for medical/scientific imaging.
+- family: Commercial / embedded surfaces
+  description: Enterprise-tier component and embedding products.
+  components:
+  - name: Dash Design Kit
+    docs: https://plotly.com/dash/design-kit/
+    summary: Enterprise theming and layout system for Dash apps.
+    tier: Enterprise
+  - name: Dash Embedded
+    docs: https://plotly.com/dash/embedding/
+    summary: Secure embedding of Dash apps into third-party web applications.
+    tier: Enterprise
+  - name: Snapshot Engine
+    summary: Enterprise library for capturing and sharing app snapshots.
+    tier: Enterprise
+    note: Docs gated to a Cloud for Enterprise subscription via the Dash Docs MCP server.
+  - name: Plotly Studio Embedded
+    docs: https://plotly.com/studio/
+    summary: AI analytics embedded inside a customer's Dash app.
+    tier: Enterprise
+component_authoring:
+  supported: true
+  boilerplate: https://github.com/plotly/dash-component-boilerplate
+  typescript_template: https://github.com/plotly/dash-typescript-component-template
+  note: Plotly publishes templates so third parties can ship their own Dash component libraries.

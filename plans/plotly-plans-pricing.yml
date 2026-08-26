@@ -1,0 +1,73 @@
+generated: '2026-08-26'
+method: searched
+source: https://plotly.com/pricing/
+currency: USD
+plan_count: 3
+note: >-
+  Plotly publishes self-serve pricing for Plotly Studio and Plotly Cloud. Dash Enterprise is
+  quoted separately and has no published price - https://plotly.com/get-pricing/ is a contact
+  form. Plotly meters AI usage in "Plotly credits" rather than API calls; no API rate or request
+  quota is attached to any tier.
+plans:
+- name: Free
+  price: 0
+  currency: USD
+  period: month
+  signup: https://plotly.com/pricing/
+  included:
+    plotly_credits: 10
+    credits_note: 10 Plotly credit trial (one-time, not monthly)
+    creator_seats: 1
+    private_viewers: 3
+    apps: 1
+  features:
+  - Access to Plotly Studio
+  - Custom URLs
+  - One-click publishing
+  - Plotly-branded apps
+  notes: No credit card required.
+- name: Pro
+  price: 29
+  currency: USD
+  period: month
+  annual_price: 290
+  annual_period: year
+  unit: per Creator seat
+  included:
+    plotly_credits: 30
+    credits_note: 30 Plotly credits monthly
+    creator_seats: 1
+    private_viewers: 10
+    apps: unlimited
+  overage:
+  - item: additional viewer seat
+    price: 10
+    currency: USD
+    period: month
+  features:
+  - Private apps with viewers
+  - Custom domains
+  - Customized app branding
+- name: Enterprise
+  price: null
+  price_model: contact-sales
+  contact: https://plotly.com/get-pricing/
+  included:
+    creator_seats: flexible
+    private_viewers: flexible
+    apps: unlimited
+    ai_usage: unlimited with private LLM
+  features:
+  - SOC 2 and ISO certifications (27001, 27701, 42001)
+  - Code exporting
+  - Custom hosting
+  - SSO / OAuth
+  - Dash Design Kit
+  - Secure embedding
+x-evidence:
+- url: https://plotly.com/pricing/
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://plotly.com/get-pricing/
+  http_status: 200
+  fetched: '2026-08-26'

@@ -1,0 +1,105 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://signin.cloud.plotly.com/.well-known/openid-configuration,
+  https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp,
+  https://dash.plotly.com/plotly-cloud/cli, https://dash.plotly.com/dash-enterprise/cli,
+  https://github.com/plotly/dds-api-docs
+docs: https://dash.plotly.com/plotly-cloud/sign-in
+note: >-
+  Derived from probed discovery metadata, not from an OpenAPI securitySchemes block - Plotly
+  publishes no OpenAPI. Three distinct auth models operate across three products.
+schemes:
+- name: PlotlyCloudOAuth
+  type: oauth2
+  applies_to:
+  - Dash Docs MCP Server (https://dash.plotly.com/_mcp)
+  - Plotly Cloud
+  issuer: https://signin.cloud.plotly.com
+  discovery:
+    openid_configuration: https://signin.cloud.plotly.com/.well-known/openid-configuration
+    oauth_authorization_server: https://signin.cloud.plotly.com/.well-known/oauth-authorization-server
+    protected_resource_metadata: https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp
+  endpoints:
+    authorization: https://signin.cloud.plotly.com/oauth2/authorize
+    token: https://signin.cloud.plotly.com/oauth2/token
+    device_authorization: https://signin.cloud.plotly.com/oauth2/device_authorization
+    introspection: https://signin.cloud.plotly.com/oauth2/introspection
+    userinfo: https://signin.cloud.plotly.com/oauth2/userinfo
+    jwks: https://signin.cloud.plotly.com/oauth2/jwks
+    registration: https://signin.cloud.plotly.com/oauth2/register
+  grant_types:
+  - authorization_code
+  - client_credentials
+  - refresh_token
+  - urn:ietf:params:oauth:grant-type:device_code
+  response_types: [code]
+  response_modes: [query]
+  pkce:
+    supported: true
+    code_challenge_methods: [S256]
+  token_endpoint_auth_methods: [none, client_secret_basic, client_secret_post]
+  id_token_signing_alg: [RS256]
+  subject_types: [public]
+  dynamic_client_registration: true
+  client_id_metadata_document_supported: true
+  bearer_methods_supported: [header]
+  federated_identity:
+    note: >-
+      Plotly Cloud sign-in supports existing accounts such as Google, plus single sign-on for
+      teams (https://dash.plotly.com/plotly-cloud/sign-in).
+- name: PlotlyCloudApiKey
+  type: apiKey
+  in: cli-flag-or-env
+  applies_to:
+  - Plotly Cloud CLI (plotly)
+  parameter: --api-key
+  env: PLOTLY_API_KEY
+  docs: https://dash.plotly.com/plotly-cloud/cli
+  note: Non-interactive alternative to `plotly user login`, intended for CI/CD.
+- name: DashEnterpriseBasic
+  type: http
+  scheme: basic
+  applies_to:
+  - Dash Enterprise GraphQL API (https://{dash-enterprise-host}/Manager/graphql)
+  username: DASH_ENTERPRISE_USERNAME / DDS_USERNAME
+  password: DASH_ENTERPRISE_API_KEY / DDS_API_KEY
+  key_source: Dash Enterprise Management UI
+  rotation:
+    supported: true
+    operation: resetApiKey
+    note: The resetApiKey GraphQL mutation takes the account password and returns newKey.
+  docs: https://github.com/plotly/dds-api-docs
+- name: DashEnterpriseKeycloakOIDC
+  type: openIdConnect
+  applies_to:
+  - Dash Enterprise Platform API (via the Dash Enterprise CLI)
+  authorization_server: Keycloak (customer-hosted)
+  protocol: OAuth 2.0 / OpenID Connect
+  token_lifetimes:
+    access_token: 24 hours (default)
+    offline_token_refresh_window: 30 days
+  login_methods:
+  - browser-based flow
+  - username and password (recommended for CI/CD)
+  docs: https://dash.plotly.com/dash-enterprise/cli
+  note: >-
+    Self-hosted, so no public discovery document exists to probe. Recorded from Plotly's own
+    documentation.
+app_level_auth:
+  note: >-
+    Distinct from provider authentication: Plotly ships auth libraries its customers embed in
+    their own Dash apps - dash-auth (basic auth and Plotly authentication) and
+    dash-enterprise-auth. Dash MCP servers running inside a customer app either inherit Plotly
+    Cloud authentication or implement the standard OAuth 2.0 flow from the MCP specification
+    (https://dash.plotly.com/dash-mcp/auth).
+x-evidence:
+- url: https://signin.cloud.plotly.com/.well-known/openid-configuration
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://signin.cloud.plotly.com/.well-known/oauth-authorization-server
+  http_status: 200
+  fetched: '2026-08-26'
+- url: https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp
+  http_status: 200
+  fetched: '2026-08-26'

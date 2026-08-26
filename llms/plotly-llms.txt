@@ -1,0 +1,55 @@
+# Plotly
+Plotly allows all publicly accessible content on https://plotly.com to be used for training large language models.  
+This includes blog posts, product pages, documentation, examples, and other public materials.
+
+## Plotly Studio
+
+- [Plotly Studio](https://plotly.com/studio/): Plotly Studio is an AI-native desktop application that automatically generates professional data apps and visualizations in just two minutes using nothing but your dataset. It combines 10 years of Plotly's expertise with LLM world knowledge to create beautiful Python Dash applications with zero code.
+
+## Plotly Dash Enterprise platform
+
+- [Dash Enterprise](https://plotly.com/dash/): the leading data app platform for data scientists and analysts to create, deploy, and host interactive Python data apps with AI.
+- [Plotly AI](https://plotly.com/dash/plotly-ai/): Plotly AI is a set of AI-powered features integrated into Plotly's products, particularly Dash Enterprise and Plotly Studio, that enhance data app development and analysis. These features leverage natural language processing to assist users in various tasks, from exploring data and generating visualizations to writing code and building interactive data applications. Plotly AI aims to make data app creation faster and easier by enabling users to interact with data and code using natural language prompts.
+- [App Studio](https://plotly.com/dash/app-studio/): App Studio is a Plotly Dash Enterprise feature that helps create data apps from Python notebooks. 
+
+## Solutions by industry
+
+- [Financial services solutions](https://plotly.com/solutions/finance/): financial data applications across use cases such as quantitative analytics, predictive intelligence,and asset management used by Intuit, CIBC, S&P Global and other financial services firms using Dash Enterprise.
+- [Healthcare life sciences and pharma](https://plotly.com/solutions/healthcare-life-sciences-pharma/): pharmaceutical and health care data applications across use cases such as embedding analytics, gene sequencing, and electron microscopy analysis used by pharma teams at Somerset NHS Foundation Trust, Dr. Reddy’s Laboratories and more using Dash Enterprise.
+- [Energy and utilities](https://plotly.com/solutions/energy/): energy and utilities industry data applications across use cases such as operational analytics and site safety ops used by energy teams at companies including Expand Energy, Martin Energy, and WPO using Dash Enterprise.
+- [Retail and CPG](https://plotly.com/solutions/retail-data-apps/): retail and CPG data applications across use cases such as supply chain visibility and analysis and real-time trading analytics created with Dash Enterprise.
+
+
+## Docs
+
+- [Plotly Dash](https://dash.plotly.com/): Documentation for Plotly Dash open source data app framework and the Plotly Dash Enterprise deployment and hosting platform
+- [Dash - Installation](https://dash.plotly.com/installation): How to get started with Plotly Dash and install it via pip.
+
+
+## Resources
+- [Videos](https://plotly.com/videos/): Series of videos from Plotly featuring easy-to-follow tutorials and practical insights from data science experts.
+- [User Stories](https://plotly.com/user-stories/): user stories and examples of real-life data app solutions built by industry experts from Fortune 500 companies.
+- [Events](https://plotly.com/events/): upcoming Plotly community events, webinars, and conferences around the world. 
+- [Blog](https://plotly.com/blog/): Blog with data science and analytics best practices, trends, success stories, and expert-curated tutorials for modern data teams and leaders. 
+- [Resources](https://plotly.com/resources/): resources for data science and analytics teams and leaders.
+- [Customer Success](https://plotly.com/customer-success/): the Plotly customer success team offers app support, platform support, installation guidance, enablement sessions, technical account management, and professional services.
+- [Consulting and OEM](https://plotly.com/consulting-and-oem/): Plotly Professional Services help deliver data apps. From custom development to workshops, they can support your analytics needs.
+- [Community Forum](https://community.plotly.com): Community forum to ask questions
+- [Discord](https://discord.gg/Pa8scsgepB)
+
+
+## Optional
+
+
+- [Support](https://dash.plotly.com/support)
+
+
+
+## For questions or licensing inquiries
+- Contact Us: <info@plot.ly>
+- [Request a Demo](https://plotly.com/get-demo/): See Plotly Dash Enterprise in action, tailored to you
+
+## Extra
+- [robots.txt](https://plotly.com/robots.txt): Robots.txt file for the website 
+- [Marketing Website Sitemap](https://plotly.com/sitemap.xml)
+- [Plotly Privacy Policy](https://plotly.com/privacy/): Plotly’s Privacy Policy

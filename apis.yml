@@ -1,23 +1,154 @@
 aid: plotly
 name: Plotly
-description: 'Plotly is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Plotly is a Montreal-based data visualization and analytics company behind the open-source
+  Plotly graphing libraries (plotly.js, plotly.py, Plotly.R, Plotly.NET, plotly.rs, Dash.jl)
+  and the Dash framework for building interactive analytical web applications in Python.
+  Its commercial products are Plotly Studio, an AI-native desktop application that generates
+  Dash data apps from a dataset; Plotly Cloud, the hosted publishing and sharing platform for
+  Dash and Studio apps; and Dash Enterprise, the self-hosted data app platform used by
+  financial services, healthcare and life sciences, energy, and retail organizations. Plotly's
+  machine-readable surfaces are a remote Dash Docs MCP server, an OAuth 2.1/OIDC authorization
+  server for Plotly Cloud, and a first-party GraphQL management API for Dash Enterprise. The
+  legacy Chart Studio Cloud REST API was retired on 2025-10-31.
+image: https://plotly.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/plotly/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
-apis: []
+- Data Visualization
+- Analytics
+- Data Apps
+- Business Intelligence
+- Open Source
+- Python
+- JavaScript
+- Charts
+- Dashboards
+- Developer Tools
+- MCP
+apis:
+- name: Dash Docs MCP Server
+  description: >-
+    A remote Model Context Protocol server published by Plotly that lets AI agents search and
+    read the Dash documentation directly. Exposes list_pages, search_pages and
+    get_page_as_markdown. Authenticated with a Plotly Cloud account over OAuth 2.1
+    (RFC 9728 protected-resource metadata is served alongside it).
+  humanURL: https://dash.plotly.com/mcp
+  baseURL: https://dash.plotly.com/_mcp
+  tags:
+  - MCP
+  - Documentation
+  - Agents
+  properties:
+  - type: MCPServer
+    url: mcp/plotly-mcp.yml
+  - type: Documentation
+    url: https://dash.plotly.com/mcp
+- name: Dash Enterprise GraphQL API
+  description: >-
+    The first-party GraphQL management API for Dash Enterprise, served from each customer's own
+    Dash Enterprise host at /Manager/graphql. Covers app lifecycle, collaborators, environment
+    variables, linked services (Postgres/Redis), workspaces, process scaling, resource requests,
+    mounted directories, portals and SSH keys. Plotly publishes the reference and runnable
+    examples in the plotly/dds-api-docs repository and ships a Go client (plotly/dds-client).
+  humanURL: https://github.com/plotly/dds-api-docs
+  baseURL: https://{dash-enterprise-host}/Manager/graphql
+  tags:
+  - GraphQL
+  - Deployment
+  - Platform Management
+  properties:
+  - type: GraphQL
+    url: graphql/plotly-dash-enterprise-graphql.yml
+  - type: Documentation
+    url: https://github.com/plotly/dds-api-docs
+  - type: SourceCode
+    url: https://github.com/plotly/dds-client
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/plotly-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/plotly-stock
+  url: https://plotly.com
+- type: DeveloperPortal
+  url: https://dash.plotly.com/
+- type: Documentation
+  url: https://dash.plotly.com/
+- type: APIReference
+  url: https://dash.plotly.com/reference
+- type: GettingStarted
+  url: https://dash.plotly.com/installation
+- type: Support
+  url: https://dash.plotly.com/support
+- type: Community
+  url: https://community.plotly.com/
+- type: Blog
+  url: https://plotly.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/plotly
+- type: Pricing
+  url: https://plotly.com/pricing/
+- type: SignUp
+  url: https://signin.cloud.plotly.com/
+- type: TermsOfService
+  url: https://plotly.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://plotly.com/privacy/
+- type: Security
+  url: https://plotly.com/security/
+- type: TrustCenter
+  url: https://trust.plotly.com/
+- type: Compliance
+  url: https://plotly.com/security/
+- type: WellKnown
+  url: well-known/plotly-well-known.yml
+- type: MCPServer
+  url: mcp/plotly-mcp.yml
+- type: GraphQL
+  url: graphql/plotly-dash-enterprise-graphql.yml
+- type: LLMsTxt
+  url: llms/plotly-llms.txt
+- type: Packages
+  url: packages/plotly-packages.yml
+- type: SDKs
+  url: packages/plotly-packages.yml
+- type: CLI
+  url: cli/plotly-cli.yml
+- type: Plans
+  url: plans/plotly-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/plotly-rate-limits.yml
+- type: Authentication
+  url: authentication/plotly-authentication.yml
+- type: OAuthScopes
+  url: scopes/plotly-scopes.yml
+- type: Conformance
+  url: conformance/plotly-conformance.yml
+- type: Lifecycle
+  url: lifecycle/plotly-lifecycle.yml
+- type: ChangeLog
+  url: changelog/plotly-changelog.yml
+- type: Conventions
+  url: conventions/plotly-conventions.yml
+- type: ErrorCatalog
+  url: errors/plotly-error-codes.yml
+- type: Components
+  url: components/plotly-components.yml
+- type: DataModel
+  url: data-model/plotly-data-model.yml
+- type: VulnerabilityDisclosure
+  url: security/plotly-vulnerability-disclosure.yml
+x-enrichment:
+  date: '2026-08-26'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1
