@@ -11,6 +11,18 @@ description: >-
   machine-readable surfaces are a remote Dash Docs MCP server, an OAuth 2.1/OIDC authorization
   server for Plotly Cloud, and a first-party GraphQL management API for Dash Enterprise. The
   legacy Chart Studio Cloud REST API was retired on 2025-10-31.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 image: https://plotly.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/plotly/refs/heads/main/apis.yml
 x-type: company
