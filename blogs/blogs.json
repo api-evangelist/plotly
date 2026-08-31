@@ -1,0 +1,14 @@
+{
+  "repo": "plotly",
+  "feeds": [
+    {
+      "source": "https://community.plotly.com/",
+      "feed_url": "https://community.plotly.com/posts.rss",
+      "title": "",
+      "saved": 8,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 8,
+  "fetched": "2026-08-30T22:33:40Z"
+}
