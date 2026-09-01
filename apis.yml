@@ -100,6 +100,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: License
+  name: MIT
+  url: https://github.com/plotly/dds-client/blob/master/LICENSE
 - type: DomainSecurity
   url: security/plotly-domain-security.yml
 - type: Website
