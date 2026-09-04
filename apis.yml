@@ -23,6 +23,22 @@ deliveryModel:
   - repository-unlicensed
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://plotly.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/plotly/refs/heads/main/apis.yml
 x-type: company
