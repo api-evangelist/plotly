@@ -52,7 +52,7 @@ tags:
 - Analytics
 - Data Apps
 - Business Intelligence
-- Open-Source
+- Open Source
 - Python
 - JavaScript
 - Charts
@@ -72,6 +72,7 @@ tags_raw:
 - Dashboards
 - Developer Tools
 - MCP
+- Open-Source
 apis:
 - name: Dash Docs MCP Server
   description: >-
