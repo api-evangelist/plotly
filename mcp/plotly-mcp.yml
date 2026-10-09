@@ -68,3 +68,16 @@ x-evidence:
 - url: https://dash.plotly.com/mcp
   http_status: 200
   fetched: '2026-08-26'
+rfc9728:
+  endpoint: https://dash.plotly.com/_mcp
+  metadata_url: https://dash.plotly.com/.well-known/oauth-protected-resource/_mcp
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://dash.plotly.com/_mcp
+    authorization_servers:
+    - https://signin.cloud.plotly.com
+    bearer_methods_supported:
+    - header
