@@ -64,5 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Plotly is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/plotly-stock
+Plotly is a Montreal-based data visualization and analytics company behind the open-source Plotly graphing libraries (plotly.js, plotly.py, Plotly.R, Plotly.NET, plotly.rs, Dash.jl) and the Dash framework for building interactive analytical web applications in Python. Its commercial products are Plotly Studio, an AI-native desktop application that generates Dash data apps from a dataset; Plotly Cloud, the hosted publishing and sharing platform for Dash and Studio apps; and Dash Enterprise, the self-hosted data app platform used by financial services, healthcare and life sciences, energy, and retail organizations. Plotly's machine-readable surfaces are a remote Dash Docs MCP server, an OAuth 2.1/OIDC authorization server for Plotly Cloud, and a first-party GraphQL management API for Dash Enterprise. The legacy Chart Studio Cloud REST API was retired on 2025-10-31.
+
+**Areas:** Company · Data Visualization · Analytics · Data Apps · Business Intelligence · Open Source · Python · JavaScript · Charts · Dashboards · Developer Tools · MCP
+
+## Plotly on APIs.io
+
+Everything profiled for Plotly is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/plotly/](https://apis.io/providers/plotly/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Dash Docs MCP Server](https://apis.io/apis/plotly/dash-docs-mcp-server/) — A remote Model Context Protocol server published by Plotly that lets AI agents search and read the Dash documentation directly. Exposes list_pages,…
+- [Dash Enterprise GraphQL API](https://apis.io/apis/plotly/dash-enterprise-graphql-api/) — The first-party GraphQL management API for Dash Enterprise, served from each customer's own Dash Enterprise host at /Manager/graphql. Covers app lifecycle,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [plotly-dash-documentation](https://apis.io/servers/plotly/plotly-dash-documentation/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Plotly Authentication](https://apis.io/security/plotly/plotly-authentication/)
+- [Plotly Domain Security](https://apis.io/security/plotly/plotly-domain-security/)
+- [Plotly Trust Center](https://apis.io/security/plotly/plotly-trust-center/)
+- [Plotly Vulnerability Disclosure](https://apis.io/security/plotly/plotly-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Plotly Scopes](https://apis.io/scopes/plotly/plotly-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plotly Plans Pricing](https://apis.io/plans/plotly/plotly-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Plotly Rate Limits](https://apis.io/rate-limits/plotly/plotly-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://plotly.com)
+- [Documentation](https://dash.plotly.com/)
+- [Getting started](https://dash.plotly.com/installation)
+- [API reference](https://dash.plotly.com/reference)
+- [Pricing](https://plotly.com/pricing/)
+- [Sign up](https://signin.cloud.plotly.com/)
+- [Support](https://dash.plotly.com/support)
+- [Blog](https://plotly.com/blog/)
+- [Security](https://plotly.com/security/)
+- [Compliance](https://plotly.com/security/)
+- [Trust centre](https://trust.plotly.com/)
+- [Terms of service](https://plotly.com/terms-of-use/)
+- [Privacy policy](https://plotly.com/privacy/)
+- [GitHub](https://github.com/plotly)
+
+## API Evangelist rating
+
+**Kin Score 49.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 71.4 |
+| Access clarity | 84.2 |
+
+**Agent readiness 26.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/plotly/](https://apis.io/providers/plotly/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Plotly: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/plotly/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
